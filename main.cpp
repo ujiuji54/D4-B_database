@@ -8,8 +8,9 @@ int main() {
 
 	//デバッグ用コード
 	database database;
-	GUI GUI(database);
+	GUI GUI;
 	
+	GUI.update(database);
 	GUI.display();
 
 	return 0;

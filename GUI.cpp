@@ -3,12 +3,6 @@
 #include"GUI.hpp"
 using namespace std;
 
-inline GUI::GUI(database input) {
-	table = input.return_table();
-	komoku_x = input.return_komoku_x();
-	komoku_y = input.return_komoku_y();
-}
-
 inline void GUI::display() {
 	cout << "-----------------------" << endl;
 	for (int i = 0; i < komoku_x.size(); i++)cout << komoku_x[i] << " ";
@@ -22,4 +16,10 @@ inline void GUI::display() {
 		cout << endl;
 	}
 	cout << "-----------------------" << endl;
+}
+
+inline void GUI::update(database input) {
+	table = input.return_table();
+	komoku_x = input.return_komoku_x();
+	komoku_y = input.return_komoku_y();
 }

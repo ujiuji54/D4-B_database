@@ -9,6 +9,6 @@ class GUI {
 	vector<string> komoku_x;
 	vector<string> komoku_y;
 public:
-	GUI(database input);
-	void display();
+	void display();//現在のデータベースの状態を表示
+	void update(database input);//データベースのデータを取ってくる
 };
