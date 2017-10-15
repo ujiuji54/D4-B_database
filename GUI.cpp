@@ -23,3 +23,8 @@ inline void GUI::update(database input) {
 	komoku_x = input.return_komoku_x();
 	komoku_y = input.return_komoku_y();
 }
+
+inline void GUI::GUI_main(database input) {
+	update(input);
+	display();
+}

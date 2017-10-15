@@ -10,8 +10,7 @@ int main() {
 	database database;
 	GUI GUI;
 	
-	GUI.update(database);
-	GUI.display();
+	GUI.GUI_main(database);
 
 	return 0;
 
