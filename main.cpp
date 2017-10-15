@@ -1,18 +1,17 @@
 #include<iostream>
 #include<vector>
-#include"database.hpp"
+#include"database.cpp"
+#include"GUI.cpp"
 using namespace std;
 
 int main() {
 
 	//デバッグ用コード
-	database root;
-	int x, y;
-	string str;
-	root.display();
-	cin >> x >> y >> str;
-	root.write(x,y,str);
-	root.display();
+	database database;
+	GUI GUI(database);
+	
+	GUI.display();
+
 	return 0;
 
 }
