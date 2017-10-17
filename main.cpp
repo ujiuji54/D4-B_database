@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
-#include"database.cpp"
-#include"GUI.cpp"
+#include"database.hpp"
+#include"GUI.hpp"
 using namespace std;
 
 int main() {
