@@ -1,4 +1,6 @@
 #include<iostream>
+#include<string>
+#include<vector>
 #include"database.hpp"
 #include"GUI.hpp"
 using namespace std;
