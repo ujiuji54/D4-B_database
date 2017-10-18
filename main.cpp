@@ -10,6 +10,11 @@ int main() {
 	database database;
 	GUI GUI;
 	
+	//データベース開発用デバッグコード
+	//GUI.update(database);
+	//GUI.display();
+	//cout << database.search_x("c") << endl; //ここをデバッグしたい関数に変える。
+
 	GUI.GUI_main(database);
 
 	return 0;
