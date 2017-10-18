@@ -37,7 +37,7 @@ void GUI::search() {}
 void GUI::file_output() {}
 
 void GUI::GUI_main(database input) {
-	int mode;
+	int mode=0;
 	while (mode!=-1) {
 		update(input);
 		display();
