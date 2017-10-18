@@ -44,9 +44,15 @@ void GUI::GUI_main(database input) {
 		cin >> mode; //mode‘I‘ð
 		switch (mode){
 		case 1:
-
+			write();
 		case 2:
-
+			add_komoku();
+		case 3:
+			sort();
+		case 4:
+			search();
+		case 5:
+			file_output();
 		default:
 			break;
 		}
