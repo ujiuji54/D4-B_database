@@ -43,6 +43,6 @@ int database::search_y(string name) {
 	return 0;
 }
 
-void database::sort(bool komoku, int n, bool order) {
+void database::sort(bool komoku, string name, bool order) {
 	//€–Úx‚ğƒ\[ƒg(komoku:x‚©y‚©,n:vecter[n],order:¸‡‚©~‡‚©)
 }

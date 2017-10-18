@@ -27,5 +27,5 @@ public:
 	void file_output();//ファイル出力
 	int search_x(string name); //項目xから名前を検索(name:項目名)
 	int search_y(string name); //項目yから名前を検索(name:項目名)
-	void sort(bool komoku,int n,bool order); //項目xをソート(komoku:xかyか,n:vecter[n],order:昇順か降順か)
+	void sort(bool komoku,string name,bool order); //項目xをソート(komoku:xかyか,name:項目名,order:昇順か降順か)
 };

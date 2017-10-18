@@ -26,6 +26,16 @@ void GUI::update(database input) {
 	komoku_y = input.return_komoku_y();
 }
 
+void GUI::write() {}
+
+void GUI::add_komoku() {}
+
+void GUI::sort() {}
+
+void GUI::search() {}
+
+void GUI::file_output() {}
+
 void GUI::GUI_main(database input) {
 	int mode;
 	while (mode!=-1) {
