@@ -8,8 +8,11 @@ vector<vector<string> > database::return_table() { return table; }
 vector<string> database::return_komoku_x() { return komoku_x; }
 vector<string> database::return_komoku_y() { return komoku_y; }
 
-void database::write(int x, int y, string input) {
+void database::write(string x_name, string y_name, string input) {
 	//w’è‚µ‚½À•W‚Ì—v‘f‚ğ‘‚«Š·‚¦‚é
+	int x, y;
+	x = search_x(x_name);
+	y = search_y(y_name);
 	if (table[0].size() < x && table.size() < y) {
 		cout << "error" << endl;
 		return;

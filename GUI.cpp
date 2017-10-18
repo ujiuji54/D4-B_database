@@ -27,6 +27,18 @@ void GUI::update(database input) {
 }
 
 void GUI::GUI_main(database input) {
-	update(input);
-	display();
+	int mode;
+	while (mode!=-1) {
+		update(input);
+		display();
+		cin >> mode; //mode‘I‘ð
+		switch (mode){
+		case 1:
+
+		case 2:
+
+		default:
+			break;
+		}
+	}
 }
