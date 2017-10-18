@@ -7,7 +7,7 @@ using namespace std;
 
 class database{
 private:
-	vector<vector<string>> table = {
+	vector<vector<string> > table = {
 		{"1","2","3"},
 		{"4","5","6"},
 		{"7","8","9"},
@@ -17,7 +17,7 @@ private:
 	//デバッグ用データを格納
 
 public:
-	vector<vector<string>> return_table();
+	vector<vector<string> > return_table();
 	vector<string> return_komoku_x();
 	vector<string> return_komoku_y();
 

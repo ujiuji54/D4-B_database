@@ -7,7 +7,7 @@
 using namespace std;
 
 class GUI {
-	vector<vector<string>> table;
+	vector<vector<string> > table;
 	vector<string> komoku_x;
 	vector<string> komoku_y;
 public:
