@@ -22,6 +22,7 @@ void database::write(string x_name, string y_name, string input) {
 
 
 void database::add_komoku_x(string input) {
+	cout << "minami test" << endl; 
 	//€–Úx’Ç‰Á(input:€–Ú–¼)
 }
 
