@@ -26,7 +26,9 @@ void GUI::update(database input) {
 	komoku_y = input.return_komoku_y();
 }
 
-void GUI::write() {}
+void GUI::write() {
+	//test okakakaka
+}
 
 void GUI::add_komoku() {}
 
