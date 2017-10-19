@@ -31,6 +31,7 @@ void database::add_komoku_y(string input) {
 
 void database::file_output() {
 	//ファイル出力
+   cout<<"test"<<endl;
 }
 
 int database::search_x(string name) {
