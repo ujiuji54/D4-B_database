@@ -27,16 +27,38 @@ void GUI::update(database input) {
 }
 
 void GUI::write() {
-	//test okakakaka
 }
 
-void GUI::add_komoku() {}
+void GUI::add_komoku() {
+	int xory;
+	string input;
+	cout<<"‰¡‚Ì€–Ú‚ð’Ç‰Á‚·‚é‚È‚ç1,c‚Ì€–Ú‚ð’Ç‰Á‚·‚é‚È‚ç2‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>xory;
+	cout<<"€–Ú–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>input;
+	if(xory==1){
+		//database.add_komoku_x(input);
+	}
+	if(xory==2){
+		//database.add_komoku_y(input);
+	}
+}
 
-void GUI::sort() {}
+void GUI::sort() {
 
-void GUI::search() {}
+	//database.sort()
 
-void GUI::file_output() {}
+}
+
+void GUI::search() {
+	database.search()
+
+}
+
+void GUI::file_output() {
+	database.file_out()
+
+}
 
 void GUI::GUI_main(database input) {
 	int mode=0;
