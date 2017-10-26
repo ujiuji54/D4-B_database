@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include <algorithm>
 #include"database.hpp"
 using namespace std;
 
@@ -22,12 +23,26 @@ void database::write(string x_name, string y_name, string input) {
 
 
 void database::add_komoku_x(string input) {
-	cout << "minami test" << endl; 
 	//€–Úx’Ç‰Á(input:€–Ú–¼)
+	int y_size=table.size();
+	komoku_x.push_back(input);
+	for(int i=0; i<y_size; i++){
+		table[i].push_back(NULL);
+	}
+	
+	
 }
 
 void database::add_komoku_y(string input) {
 	//€–Úy’Ç‰Á(input:€–Ú–¼)
+	int x_size=table[0].size();
+	int y_size=table.size();
+	vector<string> str;
+	komoku_y.push_back(input);
+	for(int i=0; i<x_size; i++){
+		str.push_back(NULL);		
+	}
+	table.push_back(str);
 }
 
 void database::file_output() {
@@ -46,4 +61,5 @@ int database::search_y(string name) {
 
 void database::sort(bool komoku, string name, bool order) {
 	//€–Úx‚ðƒ\[ƒg(komoku:x‚©y‚©,n:vecter[n],order:¸‡‚©~‡‚©)
+	
 }
