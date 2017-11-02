@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<fstream>
 #include"database.hpp"
 using namespace std;
 
@@ -31,7 +32,16 @@ void database::add_komoku_y(string input) {
 
 void database::file_output() {
 	//ファイル出力
-   cout<<"test"<<endl;
+	ofstream outputfile("test.txt");
+   int size_x=(int)komoku_x.size();
+   int size_y=(int)komoku_y.size();
+	for(int i=0;i<size_x;i++) outputfile<<" "<<komoku_x[i];
+	for(int i=0;i<size_y;i++){
+		outputfile<<endl;
+      outputfile<<komoku_y[i];
+		for(int j=0;j<size_x;j++) outputfile<<" "<<table[i][j];
+   }
+   outputfile.close();
 }
 
 int database::search_x(string name) {
