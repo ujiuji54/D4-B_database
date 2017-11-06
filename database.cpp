@@ -101,12 +101,18 @@ void database::file_input(){
 
 int database::search_x(string name) {
 	//€–Úx‚©‚ç–¼‘O‚ğŒŸõ(name:€–Ú–¼)
-	return 0;
+	for (int i = 0; i < komoku_x.size(); i++) {
+		if(komoku_x[i] == name)return i;
+	}
+	return -1;
 }
 
 int database::search_y(string name) {
 	//€–Úy‚©‚ç–¼‘O‚ğŒŸõ(name:€–Ú–¼)
-	return 0;
+	for	(int i = 0; i < komoku_y.size(); i++) {
+		if (komoku_y[i] == name)return i;
+	}
+	return -1;
 }
 
 void database::sort(bool komoku, string name, bool order) {
