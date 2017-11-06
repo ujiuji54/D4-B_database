@@ -15,9 +15,11 @@ int main() {
 	//GUI.display();
 	//cout << database.search_x("c") << endl; //ここをデバッグしたい関数に変える。
 
-	//GUI.GUI_main(database);
+	GUI.GUI_main(database);
+	/*  input output のテストよう
 	database.file_output();
 	database.file_input();
+	*/
 	return 0;
 
 }
