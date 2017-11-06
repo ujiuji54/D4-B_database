@@ -27,7 +27,7 @@ void database::add_komoku_x(string input) {
 	int y_size=table.size();
 	komoku_x.push_back(input);
 	for(int i=0; i<y_size; i++){
-		table[i].push_back(NULL);
+		table[i].push_back("NULL");
 	}
 	
 	
@@ -40,7 +40,7 @@ void database::add_komoku_y(string input) {
 	vector<string> str;
 	komoku_y.push_back(input);
 	for(int i=0; i<x_size; i++){
-		str.push_back(NULL);		
+		str.push_back("NULL");		
 	}
 	table.push_back(str);
 }
