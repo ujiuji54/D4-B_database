@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include <algorithm>
+#include<fstream>
 #include"database.hpp"
 using namespace std;
 
@@ -47,6 +48,55 @@ void database::add_komoku_y(string input) {
 
 void database::file_output() {
 	//ƒtƒ@ƒCƒ‹o—Í
+	ofstream outputfile("test.txt");
+   int size_x=(int)komoku_x.size();
+   int size_y=(int)komoku_y.size();
+	for(int i=0;i<size_x;i++) outputfile<<" "<<komoku_x[i];
+	for(int i=0;i<size_y;i++){
+		outputfile<<endl;
+      outputfile<<komoku_y[i];
+		for(int j=0;j<size_x;j++) outputfile<<" "<<table[i][j];
+   }
+   outputfile.close();
+}
+
+void database::file_input(){
+	char c = 0;
+	string s;
+	vector<string> data_str;
+	komoku_x.clear();//”O‚Ì‚½‚ßclear
+	komoku_y.clear();//”O‚Ì‚½‚ßclear
+	table.clear();//”O‚Ì‚½‚ßclear
+	ifstream inputfile("test.txt");
+	//ofstream outputfile("test2.txt");
+	while (1) {
+		inputfile >> s;
+		komoku_x.push_back(s);
+		inputfile.get(c);
+		if (c == 10) break;
+	}
+	while ((inputfile >> s)) {
+		komoku_y.push_back(s);
+		inputfile.get(c);
+		for (auto i : komoku_x) {
+			inputfile >> s;
+			data_str.push_back(s);
+		}
+		table.push_back(data_str);
+		data_str.clear();
+	}
+	int size_x = (int)komoku_x.size();
+	int size_y = (int)komoku_y.size();
+	for (int i = 0; i<size_x; i++) cout<< " " << komoku_x[i];
+	for (int i = 0; i<size_y; i++) {
+		cout << endl;
+		cout << komoku_y[i];
+		for (int j = 0; j<size_x; j++) cout << " " << table[i][j];
+
+	}
+	cout << endl;
+	inputfile.close();
+	//outputfile.close();
 }
 
 int database::search_x(string name) {
