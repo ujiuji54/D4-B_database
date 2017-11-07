@@ -117,5 +117,18 @@ int database::search_y(string name) {
 
 void database::sort(bool komoku, string name, bool order) {
 	//€–Úx‚ğƒ\[ƒg(komoku:x‚©y‚©,n:vecter[n],order:¸‡‚©~‡‚©)
-	
+	int num;//€–Ú‚Ì”Ô†
+   	int size_x=(int)komoku_x.size();
+   	int size_y=(int)komoku_y.size();
+	if(komoku==0){
+		num=search_x(name);
+		for(int i;i<size_x;i++){
+			if(order == true){
+				if((int)table[i][num][0]>(int)table[i+1][num][0]);
+			}
+		}
+	}
+	else{
+		num=search_y(name);
+	}
 }
