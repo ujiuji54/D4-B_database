@@ -119,3 +119,47 @@ void database::sort(bool komoku, string name, bool order) {
 	//€–Úx‚ğƒ\[ƒg(komoku:x‚©y‚©,n:vecter[n],order:¸‡‚©~‡‚©)
 	
 }
+
+void database::sort_30(int x){
+	int y=0;
+	bool compera(int y_comp){
+		int comp=0;
+		while(1){
+			if(table[y_comp][x][comp]<table[y+1][x][comp]) return false;
+			else if(table[y_comp][x][comp]>table[y+1][x][comp]) return true;
+			else if(table[y_comp][x][comp]==0&&table[y+1][x][comp]==0) return false;
+			else comp +=1;
+		}
+	}
+	struct node{
+		int y_str;
+	   	struct node *left;
+	    	struct node *right;
+	};
+	struct node *insert(struct node *x){
+		 if(x==NULL){
+		 	x=(struct node *)malloc(sizeof(struct node));
+		       	x->y_str=y;
+			y++
+		        x->left=NULL;
+			x->right=NULL;
+		}
+		else{
+			if(compare(x->y_str)) x->left = insert(x->left);
+			else x->right = insert(x->right);
+		}
+		return x;
+	}
+
+	void treeprint(struct node *x){
+		if(x!=NULL){
+			treeprint(x->left);
+		     	cout << x->y_str << endl;
+		       	treeprint(x->right);
+		}
+	}
+	struct node *root;
+	root=NULL;
+	for(auto i :komoku_y) root=insert(root);
+	treeprint(root);
+}
