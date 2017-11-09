@@ -15,7 +15,7 @@ void database::write(string x_name, string y_name, string input) {
 	int x, y;
 	x = search_x(x_name);
 	y = search_y(y_name);
-	if (table[0].size() < x && table.size() < y) {
+	if (table[0].size() < x || table.size() < y) {
 		cout << "error" << endl;
 		return;
 	}
@@ -30,8 +30,6 @@ void database::add_komoku_x(string input) {
 	for(int i=0; i<y_size; i++){
 		table[i].push_back("NULL");
 	}
-	
-	
 }
 
 void database::add_komoku_y(string input) {
@@ -65,15 +63,15 @@ void database::remove_komoku_y(string input) {
 void database::file_output() {
 	//ファイル出力
 	ofstream outputfile("test.txt");
-   int size_x=(int)komoku_x.size();
-   int size_y=(int)komoku_y.size();
+	int size_x=(int)komoku_x.size();
+	int size_y=(int)komoku_y.size();
 	for(int i=0;i<size_x;i++) outputfile<<" "<<komoku_x[i];
 	for(int i=0;i<size_y;i++){
 		outputfile<<endl;
-      outputfile<<komoku_y[i];
+		outputfile<<komoku_y[i];
 		for(int j=0;j<size_x;j++) outputfile<<" "<<table[i][j];
-   }
-   outputfile.close();
+	}
+	outputfile.close();
 }
 
 void database::file_input(){
