@@ -1,22 +1,27 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#pragma once
+#include<iostream>
+#include<string>
+#include<vector>
+#include <algorithm>
+#include<fstream>
+#include"database.hpp"
+#include <stdio.h>
 
-using namespace std;
-vector<string> komoku_y={"1","2","3","4"};
-vector<string> komoku_x={"1","2","3"};
-vector<vector<string> > table={
-	{"aa","bb","1000"},
-	{"dd","ee","500"},
-	{"cc","aa","70"},
-	{"cc","cc","450"},
-};
+vector<string> komoku_y;
+vector<string> komoku_x;
+vector<vector<string> > table;
+
 int sort_x;//xの項目をソートするとき
 int sort_y;//yの項目をソートするとき
 int y;
 int x;
 bool mode;//trueが文字列falseが整数
 
+void getdata(database input){
+	table = input.return_table();
+	komoku_x = input.return_komoku_x();
+	komoku_y = input.return_komoku_y();
+}
 
 struct node{
 	int str;
@@ -43,34 +48,34 @@ bool compare_x(int x_comp){
 		}
 	}
 }
-struct node *insert_x(struct node *y){
-	 if(y==NULL){
-		y=(struct node *)malloc(sizeof(struct node));
-		y->str=x;
+struct node *insert_x(struct node *yp){
+	 if(yp==NULL){
+		yp=(struct node *)malloc(sizeof(struct node));
+		yp->str=x;
 		x++;
-	        y->left=NULL;
-		y->right=NULL;
+	   yp->left=NULL;
+		yp->right=NULL;
 	}
-	else if(compare_x(y->str)) y->left = insert_x(y->left);
-	else y->right = insert_x(y->right);
-	return y;
+	else if(compare_x(yp->str)) yp->left = insert_x(yp->left);
+	else yp->right = insert_x(yp->right);
+	return yp;
 }
 
-void treeprint_x(struct node *y,int y_val){
-	if(y!=NULL){
-		treeprint_x(y->left,y_val);
-		cout<<" "<<table[y_val][y->str];
+void treeprint_x(struct node *yp,int y_val){
+	if(yp!=NULL){
+		treeprint_x(yp->left,y_val);
+		cout<<" "<<table[y_val][yp->str];
 	     	//for(int i=0;i<komoku_y.size();i++)cout << " "<<table[i][y->str];
-	       	treeprint_x(y->right,y_val);
+	       	treeprint_x(yp->right,y_val);
 	}
 	//cout<<endl;
 }
-void treeprint_komoku_x(struct node *y){
-	if(y!=NULL){
-		treeprint_komoku_x(y->left);
-		cout<<" "<<komoku_x[y->str];
+void treeprint_komoku_x(struct node *yp){
+	if(yp!=NULL){
+		treeprint_komoku_x(yp->left);
+		cout<<" "<<komoku_x[yp->str];
 	     	//for(int i=0;i<komoku_y.size();i++)cout << " "<<table[i][y->str];
-	       	treeprint_komoku_x(y->right);
+	       	treeprint_komoku_x(yp->right);
 	}
 }
 
@@ -93,26 +98,26 @@ bool compare_y(int y_comp){
 		}
 	}
 }
-struct node *insert_y(struct node *x){
-	 if(x==NULL){
-		x=(struct node *)malloc(sizeof(struct node));
-		x->str=y;
+struct node *insert_y(struct node *xp){
+	 if(xp==NULL){
+		xp=(struct node *)malloc(sizeof(struct node));
+		xp->str=y;
 		y++;
-	        x->left=NULL;
-		x->right=NULL;
+	   xp->left=NULL;
+		xp->right=NULL;
 	}
-	else if(compare_y(x->str)) x->left = insert_y(x->left);
-	else x->right = insert_y(x->right);
-	return x;
+	else if(compare_y(xp->str)) xp->left = insert_y(xp->left);
+	else xp->right = insert_y(xp->right);
+	return xp;
 }
 
-void treeprint_y(struct node *x){
-	if(x!=NULL){
-		treeprint_y(x->left);
-		cout<<komoku_y[x->str];
-	     	for(int i=0;i<komoku_x.size();i++)cout << " "<<table[x->str][i];
+void treeprint_y(struct node *xp){
+	if(xp!=NULL){
+		treeprint_y(xp->left);
+		cout<<komoku_y[xp->str];
+	   for(int i=0;i<komoku_x.size();i++)cout << " "<<table[xp->str][i];
 		cout<<endl;
-	       	treeprint_y(x->right);
+	   treeprint_y(xp->right);
 	}
 }
 
@@ -136,19 +141,20 @@ void sort_komoku_y(){
 	cout<<endl;
 	treeprint_y(root);
 }
-int main(){
-	/*
-	string str="ABC";
-	cout << str << endl;
-	cout << p()<<endl;
-	cout << table[0][2][0]<<endl;
-	*/
+void sort_inf(bool p,int val,bool p2){
+	if(p){ //Y
+		if(p2) //降順
+		else //昇順
+	}
+	else{ //x
+		if(p2) //降順
+		else //昇順
+	}
 	y=0;
 	x=0;
 	mode=false;
-	sort_x=2;
-	sort_y=2;
-	//sort_komoku_x();
-	sort_komoku_y();
-	return 0;
+	sort_x=0;
+	sort_y=0;
+	sort_komoku_x();
+	//sort_komoku_y();
 }
