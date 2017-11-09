@@ -47,64 +47,64 @@ void GUI::update(database input) {
 	komoku_y = input.return_komoku_y();
 }
 
-void GUI::write() {
+void GUI::write(database input) {
 	string x;
 	string y;
 	string inf;
 	cout << "データを入力するモードです。座標指定後、データを入力します。" << endl;
-	cout << "横の項目を選択してください" << endl;
+	cout << "横の項目名を入力してください" << endl;
 	cin >> x;
-	cout << "縦の項目を選択してください" << endl;
+	cout << "縦の項目名を入力してください" << endl;
 	cin >> y;
 	cout << "情報を入力してください" << endl;
 	cin >> inf;
-	//input.write(x,y,inf);
+	input.write(x,y,inf);
 }
 
-void GUI::add_komoku() {
+void GUI::add_komoku(database input) {
 	int xory;
-	string input;
+	string name;
 	cout<<"横の項目を追加するなら0,縦の項目を追加するなら1を入力してください"<<endl;
 	cin>>xory;
 	cout<<"追加する項目名を入力してください"<<endl;
-	cin>>input;
+	cin>>name;
 	if(xory==0){
-		//database.add_komoku_x(input);
+		input.add_komoku_x(name);
 	}
 	if(xory==1){
-		//database.add_komoku_y(input);
+		input.add_komoku_y(name);
 	}
 }
 
-void GUI::sort() {
+void GUI::sort(database input) {
 	bool xory;
-	string input;
+	string name;
 	bool order;
 	cout<<"横の項目を並び替えるなら0,縦の項目を並び替えるなら1を入力してください"<<endl;
 	cin>>xory;
 	cout<<"並び替える項目の名前を入力してください"<<endl;
-	cin>>input;
+	cin>>name;
 	cout<<"昇順にしたいなら0,降順にしたいなら1を入力してください"<<endl;
 	cin>>order;
-		//database.sort(xory,input,order);
+		//database.sort(xory,name,order);
 }
 
-void GUI::search() {
+void GUI::search(database input) {
 	int xory;
-	string input;
+	string name;
 	cout<<"横の項目から検索するなら0,縦の項目から検索するなら1を入力してください"<<endl;
 	cin>>xory;
 	cout<<"検索する項目名を入力してください"<<endl;
 	if(xory==0){
-		//database.search_x(input);
+		input.search_x(name);
 	}
 	if(xory==1){
-		//database.search_y(input);
+		input.search_y(name);
 	}
 }
 
-void GUI::file_output() {
-	//database.file_out();
+void GUI::file_output(database input) {
+	input.file_output();
 	cout<<"test.txtに出力が完了しました"<<endl;
 }
 
@@ -123,19 +123,19 @@ void GUI::GUI_main(database input) {
 		cin >> mode; //mode選択
 		switch (mode){
 		case 1:
-			write();
+			write(input);
 			break;
 		case 2:
-			add_komoku();
+			add_komoku(input);
 			break;
 		case 3:
-			sort();
+			sort(input);
 			break;
 		case 4:
-			search();
+			search(input);
 			break;
 		case 5:
-			file_output();
+			file_output(input);
 			break;
 		case 6:
 			cout << "終了します．" << endl;
