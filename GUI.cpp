@@ -26,15 +26,55 @@ void GUI::update(database input) {
 	komoku_y = input.return_komoku_y();
 }
 
-void GUI::write() {}
+void GUI::write() {
+}
 
-void GUI::add_komoku() {}
+void GUI::add_komoku() {
+	int xory;
+	string input;
+	cout<<"‰¡‚Ì€–Ú‚ð’Ç‰Á‚·‚é‚È‚ç0,c‚Ì€–Ú‚ð’Ç‰Á‚·‚é‚È‚ç1‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>xory;
+	cout<<"’Ç‰Á‚·‚é€–Ú–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>input;
+	if(xory==0){
+		//database.add_komoku_x(input);
+	}
+	if(xory==1){
+		//database.add_komoku_y(input);
+	}
+}
 
-void GUI::sort() {}
+void GUI::sort() {
+	bool xory;
+	string input;
+	bool order;
+	cout<<"‰¡‚Ì€–Ú‚ð•À‚Ñ‘Ö‚¦‚é‚È‚ç0,c‚Ì€–Ú‚ð•À‚Ñ‘Ö‚¦‚é‚È‚ç1‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>xory;
+	cout<<"•À‚Ñ‘Ö‚¦‚é€–Ú‚Ì–¼‘O‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>input;
+	cout<<"¸‡‚É‚µ‚½‚¢‚È‚ç0,~‡‚É‚µ‚½‚¢‚È‚ç1‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>order;
+		//database.sort(xory,input,order);
+}
 
-void GUI::search() {}
+void GUI::search() {
+	int xory
+	string input;
+	cout<<"‰¡‚Ì€–Ú‚©‚çŒŸõ‚·‚é‚È‚ç0,c‚Ì€–Ú‚©‚çŒŸõ‚·‚é‚È‚ç1‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	cin>>xory;
+	cout<<"ŒŸõ‚·‚é€–Ú–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
+	if(xory==0){
+		//database.search_x(input);
+	}
+	if(xory==1){
+		//database.search_y(input);
+	}
+}
 
-void GUI::file_output() {}
+void GUI::file_output() {
+	//database.file_out();
+	cout<<"test.txt‚Éo—Í‚ªŠ®—¹‚µ‚Ü‚µ‚½"<<endl;
+}
 
 void GUI::GUI_main(database input) {
 	int mode=0;
