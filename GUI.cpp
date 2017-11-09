@@ -9,37 +9,36 @@ void GUI::display() {
 	cout << "-----------------------" << endl;
 	string str;
 	int box=0;
-	for (int i = 0; i < komoku_y.size(); i++){
-		if(komoku_y[i].size() > box) box = komoku_y[i].size(); 
+	for (int i = 0; i < (int)komoku_y.size(); i++){
+		if((int)komoku_y[i].size() > box) box = komoku_y[i].size(); 
 	}
 	
-	/*string boxx;
-	for (int i = 0; i < table.size(); i++){
-		for (int j = 0; j < table[i].size(); j++){
-			if(boxx[j] << table[i][j].size()) boxx[j] = table[i][j].size();
-			cout << table[i][j].size() << endl;
+	int boxx[(int)komoku_x.size()];
+	for (int i = 0; i < (int)komoku_x.size();i++)boxx[i]=0;//boxx[]‚Ì‰Šú‰»
+	for (int i = 0; i < (int)komoku_y.size(); i++){
+		for (int j = 0; j < (int)komoku_x.size(); j++){
+			if(boxx[j] < (int)table[i][j].size()) boxx[j] = (int)table[i][j].size();
 		}
-	}*/
+	}
 	
-	for(int j = 0; j <= box; j++) cout << " ";
-	
-	for (int i = 0; i < komoku_x.size(); i++){
+	for (int i = 0; i < box+1; i++) cout << " ";
+	for (int i = 0; i < (int)komoku_x.size(); i++){
 		cout << komoku_x[i] << " ";
+		for(int j = 0; j < boxx[i] - (int)komoku_x[i].size();j++) cout << " ";
 	}
 	cout << endl;
 
-	for (int i = 0; i < table.size(); i++) {
+	for (int i = 0; i < (int)komoku_x.size(); i++) {
 		cout << komoku_y[i] << " ";
-		for(int j = 0; j < box - komoku_y[i].size();j++) cout << " ";
-		for (int j = 0; j < table[i].size(); j++) {
+		for(int j = 0; j < box - (int)komoku_y.size();j++)cout << " ";
+		for (int j = 0; j < (int)komoku_y.size(); j++) {
 			cout << table[i][j] << " ";
-			//for(int a = 0; a < boxx[j] - table[i][j].size();a++) cout << " ";
+			for(int k = 0; k < boxx[j] - (int)table[i][j].size();k++) cout << " ";
 		}
 		cout << endl;
 	}
 	cout << "-----------------------" << endl;
 }
-
 
 void GUI::update(database input) {
 	table = input.return_table();
