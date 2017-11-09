@@ -45,12 +45,14 @@ void GUI::add_komoku() {
 }
 
 void GUI::sort() {
-
+	
 	//database.sort()
 
 }
 
 void GUI::search() {
+	string input;
+	cout<<"‰¡‚Ì€–Ú‚©‚çŒŸõ‚·‚é‚È‚ç1,c‚Ì€–Ú‚©‚çŒŸõ‚·‚é‚È‚ç2‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"<<endl;
 	database.search()
 
 }
