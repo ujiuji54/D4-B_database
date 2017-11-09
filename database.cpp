@@ -96,3 +96,46 @@ int database::search_y(string name) {
 void database::sort(bool komoku, string name, bool order) {
 	//€–Úx‚ğƒ\[ƒg(komoku:x‚©y‚©,n:vecter[n],order:¸‡‚©~‡‚©)
 }
+
+void database::sort_1(int x){
+	vector<vector<string> > table_sort;
+	int len=komoku_x.size();
+	int y=0;
+	struct node{
+ 		vector<string> number;
+ 		//int count;
+		struct node *left;
+		struct node *right;
+	};
+	struct node *insert(struct node *x){
+ 		if(x==NULL){
+  			for (int i=0;i<len;i++) x->number.push_back(table[y][len]);
+  			//strcpy(x->number,a);
+  			//x->count=1;
+  			x->left=NULL;
+  			x->right=NULL;
+  		}
+ 		else{
+  			//int p=0;
+  			//p=strcmp(x->number,a);
+  			if(p==0) x->count+=1;
+  			else if(a[0]<x->number[0]) x->left = insert(x->left,a);
+  			else x->right = insert(x->right,a);
+ 		}
+ 		return x;
+	}
+	void treeprint(struct node *x){
+ 		if(x!=NULL){
+  			treeprint(x->left);
+  			printf("%s : %d \n",x->number,x->count);
+  			treeprint(x->right);
+ 		}
+	}
+
+
+
+
+
+
+	
+}
