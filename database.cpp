@@ -46,6 +46,22 @@ void database::add_komoku_y(string input) {
 	table.push_back(str);
 }
 
+void database::remove_komoku_x(string input) {
+	int num = search_x(input);
+	int y_size=table.size();
+	komoku_x.erase(komoku_x.begin()+num);
+	for(int i=0; i<y_size; i++){
+		table[i].erase(table[i].begin()+num);
+	}
+}
+
+void database::remove_komoku_y(string input) {
+	int num = search_y(input);
+	int x_size=table[0].size();
+	komoku_y.erase(komoku_y.begin()+num);
+	table.erase(table.begin()+num);
+}	
+
 void database::file_output() {
 	//ファイル出力
 	ofstream outputfile("test.txt");

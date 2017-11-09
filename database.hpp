@@ -24,6 +24,8 @@ public:
 	void write(string x_name, string y_name, string input);//指定した座標の要素を書き換える
 	void add_komoku_x(string input);//項目x追加(input:項目名)
 	void add_komoku_y(string input);//項目y追加(input:項目名)
+	void remove_komoku_x(string input);
+	void remove_komoku_y(string input);
 	void file_output();//ファイル出力
 	void file_input();//ファイルからデータの取得
 	int search_x(string name); //項目xから名前を検索(name:項目名)
