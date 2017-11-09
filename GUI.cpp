@@ -51,14 +51,14 @@ void GUI::write() {
 	string x;
 	string y;
 	string inf;
-	cout << "データを入力するモードです。座標指定後、データを入力します。"　<< endl;
+	cout << "データを入力するモードです。座標指定後、データを入力します。" << endl;
 	cout << "横の項目を選択してください" << endl;
 	cin >> x;
 	cout << "縦の項目を選択してください" << endl;
 	cin >> y;
 	cout << "情報を入力してください" << endl;
 	cin >> inf;
-	database.write(x,y,inf)
+	//input.write(x,y,inf);
 }
 
 void GUI::add_komoku() {
@@ -90,7 +90,7 @@ void GUI::sort() {
 }
 
 void GUI::search() {
-	int xory
+	int xory;
 	string input;
 	cout<<"横の項目から検索するなら0,縦の項目から検索するなら1を入力してください"<<endl;
 	cin>>xory;
@@ -113,7 +113,7 @@ void GUI::GUI_main(database input) {
 	while (mode!=6) {
 		update(input);
 		display();
-		cout << "利用したい機能を選択してください" << endl;
+		//cout << "利用したい機能を選択してください" << endl;
 		cout << "1  : 情報の書き込み" << endl;
 		cout << "2  : データベース項目の追加" << endl;
 		cout << "3  : 項目の並び替え" << endl;
