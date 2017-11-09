@@ -5,7 +5,7 @@
 #include"GUI.hpp"
 using namespace std;
 
-void display() {
+void GUI::display() {
 	cout << "-----------------------" << endl;
 	string str;
 	int box=0;
@@ -69,7 +69,7 @@ void GUI::search() {}
 
 void GUI::file_output() {}
 
-void GUI_main(database input) {
+void GUI::GUI_main(database input) {
 	int mode=0;
 	while (mode!=6) {
 		update(input);
