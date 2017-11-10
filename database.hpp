@@ -9,9 +9,9 @@ class database{
 private:
 public:
 	vector<vector<string> > table = {
-		{"1","2","3"},
-		{"4","5","6"},
-		{"7","8","9"},
+		{"9","2","3000000"},
+		{"4","5","60000"},
+		{"7","8","9000000"},
 	};
 	vector<string> komoku_x = {"a","b","c"};
 	vector<string> komoku_y = { "d","e","f" };
@@ -19,7 +19,6 @@ public:
 	vector<vector<string> > return_table();
 	vector<string> return_komoku_x();
 	vector<string> return_komoku_y();
-
 	void write(string x_name, string y_name, string input);//w’è‚µ‚½À•W‚Ì—v‘f‚ğ‘‚«Š·‚¦‚é
 	void add_komoku_x(string input);//€–Úx’Ç‰Á(input:€–Ú–¼)
 	void add_komoku_y(string input);//€–Úy’Ç‰Á(input:€–Ú–¼)

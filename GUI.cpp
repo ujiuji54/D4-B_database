@@ -3,6 +3,7 @@
 #include<vector>
 #include"database.hpp"
 #include"GUI.hpp"
+#include"sort.hpp"
 using namespace std;
 
 void GUI::display(database input) {
@@ -85,7 +86,9 @@ void GUI::sort(database& input) {
 	cin>>name;
 	cout<<"昇順にしたいなら0,降順にしたいなら1を入力してください"<<endl;
 	cin>>order;
-		//database.sort(xory,name,order);
+	getdata(input);
+	//sort_inf(xory,name,order);
+	//database.sort(xory,name,order);
 }
 
 void GUI::search(database input) {
