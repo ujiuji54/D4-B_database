@@ -24,6 +24,12 @@ void getdata(database input){
 	komoku_y = input.return_komoku_y();
 }
 
+void setdata(database& output){
+	output.table=table;
+	output.komoku_x=komoku_x;
+	output.komoku_y=komoku_y;
+}
+
 struct node{
 	int str;
 	struct node *left;

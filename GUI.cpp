@@ -31,7 +31,7 @@ void GUI::display(database input) {
 
 	for (int i = 0; i < (int)input.komoku_y.size(); i++) {
 		cout << input.komoku_y[i] << " ";
-		for(int j = 0; j < box - (int)input.komoku_x.size();j++)cout << " ";
+		for(int j = 0; j < box - (int)input.komoku_y[i].size();j++)cout << " ";
 		for (int j = 0; j < (int)input.komoku_x.size(); j++) {
 			cout << input.table[i][j] << " ";
 			for(int k = 0; k < boxx[j] - (int)input.table[i][j].size();k++) cout << " ";
@@ -93,6 +93,7 @@ void GUI::sort(database& input) {
 	if(xory==false)val=input.search_x(name);
 	else val=input.search_y(name);
 	sort_inf(xory,val,order,0);
+	setdata(input);
 }
 
 void GUI::search(database input) {
@@ -101,12 +102,22 @@ void GUI::search(database input) {
 	cout<<"横の項目から検索するなら0,縦の項目から検索するなら1を入力してください"<<endl;
 	cin>>xory;
 	cout<<"検索する項目名を入力してください"<<endl;
+	cin>>name;
+	int num;
+	cout << "-----------------------" << endl;
 	if(xory==0){
-		input.search_x(name);
+		num=input.search_x(name);
+		cout << komoku_x[num] << endl;
+		cout << "-----------------------" << endl;
+		for (int i=0;i<(int)komoku_y.size();i++)cout << table[i][num]<<endl;
 	}
 	if(xory==1){
-		input.search_y(name);
+		num=input.search_y(name);
+		cout << komoku_y[num]<<" |";
+		for(int i=0;i<(int)komoku_x.size();i++)cout << table[num][i]<<" ";
+		cout << endl;
 	}
+	cout << "-----------------------" << endl;
 }
 
 void GUI::file_output(database input) {
