@@ -5,35 +5,35 @@
 #include"GUI.hpp"
 using namespace std;
 
-void GUI::display() {
+void GUI::display(database input) {
 	cout << "-----------------------" << endl;
 	string str;
 	int box=0;
-	for (int i = 0; i < (int)komoku_y.size(); i++){
-		if((int)komoku_y[i].size() > box) box = komoku_y[i].size(); 
+	for (int i = 0; i < (int)input.komoku_y.size(); i++){
+		if((int)input.komoku_y[i].size() > box) box = (int)input.komoku_y[i].size(); 
 	}
 	
-	int boxx[(int)komoku_x.size()];
-	for (int i = 0; i < (int)komoku_x.size();i++)boxx[i]=0;//boxx[]ÇÃèâä˙âª
-	for (int i = 0; i < (int)komoku_y.size(); i++){
-		for (int j = 0; j < (int)komoku_x.size(); j++){
-			if(boxx[j] < (int)table[i][j].size()) boxx[j] = (int)table[i][j].size();
+	int boxx[(int)input.komoku_x.size()];
+	for (int i = 0; i < (int)input.komoku_x.size();i++)boxx[i]=0;//boxx[]„ÅÆÂàùÊúüÂåñ
+	for (int i = 0; i < (int)input.komoku_y.size(); i++){
+		for (int j = 0; j < (int)input.komoku_x.size(); j++){
+			if(boxx[j] < (int)input.table[i][j].size()) boxx[j] = (int)input.table[i][j].size();
 		}
 	}
 	
 	for (int i = 0; i < box+1; i++) cout << " ";
-	for (int i = 0; i < (int)komoku_x.size(); i++){
-		cout << komoku_x[i] << " ";
-		for(int j = 0; j < boxx[i] - (int)komoku_x[i].size();j++) cout << " ";
+	for (int i = 0; i < (int)input.komoku_x.size(); i++){
+		cout << input.komoku_x[i] << " ";
+		for(int j = 0; j < boxx[i] - (int)input.komoku_x[i].size();j++) cout << " ";
 	}
 	cout << endl;
 
-	for (int i = 0; i < (int)komoku_x.size(); i++) {
-		cout << komoku_y[i] << " ";
-		for(int j = 0; j < box - (int)komoku_y.size();j++)cout << " ";
-		for (int j = 0; j < (int)komoku_y.size(); j++) {
-			cout << table[i][j] << " ";
-			for(int k = 0; k < boxx[j] - (int)table[i][j].size();k++) cout << " ";
+	for (int i = 0; i < (int)input.komoku_x.size(); i++) {
+		cout << input.komoku_y[i] << " ";
+		for(int j = 0; j < box - (int)input.komoku_y.size();j++)cout << " ";
+		for (int j = 0; j < (int)input.komoku_y.size(); j++) {
+			cout << input.table[i][j] << " ";
+			for(int k = 0; k < boxx[j] - (int)input.table[i][j].size();k++) cout << " ";
 		}
 		cout << endl;
 	}
@@ -46,26 +46,26 @@ void GUI::update(database input) {
 	komoku_y = input.return_komoku_y();
 }
 
-void GUI::write(database input) {
+void GUI::write(database& input) {
 	string x;
 	string y;
 	string inf;
-	cout << "ÉfÅ[É^Çì¸óÕÇ∑ÇÈÉÇÅ[ÉhÇ≈Ç∑ÅBç¿ïWéwíËå„ÅAÉfÅ[É^Çì¸óÕÇµÇ‹Ç∑ÅB" << endl;
-	cout << "â°ÇÃçÄñ⁄ñºÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢" << endl;
+	cout << "„Éá„Éº„Çø„ÇíÂÖ•Âäõ„Åô„Çã„É¢„Éº„Éâ„Åß„Åô„ÄÇÂ∫ßÊ®ôÊåáÂÆöÂæå„ÄÅ„Éá„Éº„Çø„ÇíÂÖ•Âäõ„Åó„Åæ„Åô„ÄÇ" << endl;
+	cout << "Ê®™„ÅÆÈ†ÖÁõÆÂêç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ" << endl;
 	cin >> x;
-	cout << "ècÇÃçÄñ⁄ñºÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢" << endl;
+	cout << "Á∏¶„ÅÆÈ†ÖÁõÆÂêç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ" << endl;
 	cin >> y;
-	cout << "èÓïÒÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢" << endl;
+	cout << "ÊÉÖÂ†±„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ" << endl;
 	cin >> inf;
 	input.write(x,y,inf);
 }
 
-void GUI::add_komoku(database input) {
+void GUI::add_komoku(database& input) {
 	int xory;
 	string name;
-	cout<<"â°ÇÃçÄñ⁄Çí«â¡Ç∑ÇÈÇ»ÇÁ0,ècÇÃçÄñ⁄Çí«â¡Ç∑ÇÈÇ»ÇÁ1Çì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"Ê®™„ÅÆÈ†ÖÁõÆ„ÇíËøΩÂä†„Åô„Çã„Å™„Çâ0,Á∏¶„ÅÆÈ†ÖÁõÆ„ÇíËøΩÂä†„Åô„Çã„Å™„Çâ1„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>xory;
-	cout<<"í«â¡Ç∑ÇÈçÄñ⁄ñºÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"ËøΩÂä†„Åô„ÇãÈ†ÖÁõÆÂêç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>name;
 	if(xory==0){
 		input.add_komoku_x(name);
@@ -75,15 +75,15 @@ void GUI::add_komoku(database input) {
 	}
 }
 
-void GUI::sort(database input) {
+void GUI::sort(database& input) {
 	bool xory;
 	string name;
 	bool order;
-	cout<<"â°ÇÃçÄñ⁄Çï¿Ç—ë÷Ç¶ÇÈÇ»ÇÁ0,ècÇÃçÄñ⁄Çï¿Ç—ë÷Ç¶ÇÈÇ»ÇÁ1Çì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"Ê®™„ÅÆÈ†ÖÁõÆ„Çí‰∏¶„Å≥Êõø„Åà„Çã„Å™„Çâ0,Á∏¶„ÅÆÈ†ÖÁõÆ„Çí‰∏¶„Å≥Êõø„Åà„Çã„Å™„Çâ1„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>xory;
-	cout<<"ï¿Ç—ë÷Ç¶ÇÈçÄñ⁄ÇÃñºëOÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"‰∏¶„Å≥Êõø„Åà„ÇãÈ†ÖÁõÆ„ÅÆÂêçÂâç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>name;
-	cout<<"è∏èáÇ…ÇµÇΩÇ¢Ç»ÇÁ0,ç~èáÇ…ÇµÇΩÇ¢Ç»ÇÁ1Çì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"ÊòáÈ†Ü„Å´„Åó„Åü„ÅÑ„Å™„Çâ0,ÈôçÈ†Ü„Å´„Åó„Åü„ÅÑ„Å™„Çâ1„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>order;
 		//database.sort(xory,name,order);
 }
@@ -91,9 +91,9 @@ void GUI::sort(database input) {
 void GUI::search(database input) {
 	int xory;
 	string name;
-	cout<<"â°ÇÃçÄñ⁄Ç©ÇÁåüçıÇ∑ÇÈÇ»ÇÁ0,ècÇÃçÄñ⁄Ç©ÇÁåüçıÇ∑ÇÈÇ»ÇÁ1Çì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"Ê®™„ÅÆÈ†ÖÁõÆ„Åã„ÇâÊ§úÁ¥¢„Åô„Çã„Å™„Çâ0,Á∏¶„ÅÆÈ†ÖÁõÆ„Åã„ÇâÊ§úÁ¥¢„Åô„Çã„Å™„Çâ1„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	cin>>xory;
-	cout<<"åüçıÇ∑ÇÈçÄñ⁄ñºÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢"<<endl;
+	cout<<"Ê§úÁ¥¢„Åô„ÇãÈ†ÖÁõÆÂêç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ"<<endl;
 	if(xory==0){
 		input.search_x(name);
 	}
@@ -104,22 +104,22 @@ void GUI::search(database input) {
 
 void GUI::file_output(database input) {
 	input.file_output();
-	cout<<"test.txtÇ…èoóÕÇ™äÆóπÇµÇ‹ÇµÇΩ"<<endl;
+	cout<<"test.txt„Å´Âá∫Âäõ„ÅåÂÆå‰∫Ü„Åó„Åæ„Åó„Åü"<<endl;
 }
 
 void GUI::GUI_main(database input) {
 	int mode=0;
 	while (mode!=6) {
 		update(input);
-		display();
-		//cout << "óòópÇµÇΩÇ¢ã@î\ÇëIëÇµÇƒÇ≠ÇæÇ≥Ç¢" << endl;
-		cout << "1  : èÓïÒÇÃèëÇ´çûÇ›" << endl;
-		cout << "2  : ÉfÅ[É^ÉxÅ[ÉXçÄñ⁄ÇÃí«â¡" << endl;
-		cout << "3  : çÄñ⁄ÇÃï¿Ç—ë÷Ç¶" << endl;
-		cout << "4  : çÄñ⁄ÇÃåüçı" << endl;
-		cout << "5  : ÉfÅ[É^ÉxÅ[ÉXèÓïÒÇÉtÉ@ÉCÉãèoóÕ" << endl;
-		cout << "6  : èIóπ" << endl;
-		cin >> mode; //modeëIë
+		display(input);
+		//cout << "Âà©Áî®„Åó„Åü„ÅÑÊ©üËÉΩ„ÇíÈÅ∏Êäû„Åó„Å¶„Åè„Å†„Åï„ÅÑ" << endl;
+		cout << "1  : ÊÉÖÂ†±„ÅÆÊõ∏„ÅçËæº„Åø" << endl;
+		cout << "2  : „Éá„Éº„Çø„Éô„Éº„ÇπÈ†ÖÁõÆ„ÅÆËøΩÂä†" << endl;
+		cout << "3  : È†ÖÁõÆ„ÅÆ‰∏¶„Å≥Êõø„Åà" << endl;
+		cout << "4  : È†ÖÁõÆ„ÅÆÊ§úÁ¥¢" << endl;
+		cout << "5  : „Éá„Éº„Çø„Éô„Éº„ÇπÊÉÖÂ†±„Çí„Éï„Ç°„Ç§„É´Âá∫Âäõ" << endl;
+		cout << "6  : ÁµÇ‰∫Ü" << endl;
+		cin >> mode; //modeÈÅ∏Êäû
 		switch (mode){
 		case 1:
 			write(input);
@@ -137,10 +137,10 @@ void GUI::GUI_main(database input) {
 			file_output(input);
 			break;
 		case 6:
-			cout << "èIóπÇµÇ‹Ç∑ÅD" << endl;
+			cout << "ÁµÇ‰∫Ü„Åó„Åæ„ÅôÔºé" << endl;
 			break;
 		default:
-			cout << "ñ≥å¯Ç»êîéöÇ≈Ç∑ÅDì¸óÕÇµíºÇµÇƒÇ≠ÇæÇ≥Ç¢" << endl;
+			cout << "ÁÑ°Âäπ„Å™Êï∞Â≠ó„Åß„ÅôÔºéÂÖ•Âäõ„ÅóÁõ¥„Åó„Å¶„Åè„Å†„Åï„ÅÑ" << endl;
 			break;
 		}
 	}

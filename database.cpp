@@ -22,7 +22,6 @@ void database::write(string x_name, string y_name, string input) {
 	table[y][x] = input;
 }
 
-
 void database::add_komoku_x(string input) {
 	//€–Úx’Ç‰Á(input:€–Ú–¼)
 	int y_size=table.size();
