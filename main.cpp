@@ -7,22 +7,22 @@ using namespace std;
 
 int main() {
 
-	//ƒfƒoƒbƒO—pƒR[ƒh
+	//ãƒ‡ãƒãƒƒã‚°ç”¨ã‚³ãƒ¼ãƒ‰
 	database database;
 	GUI GUI;
 	
-	//ƒf[ƒ^ƒx[ƒXŠJ”­—pƒfƒoƒbƒOƒR[ƒh
+	//ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹é–‹ç™ºç”¨ãƒ‡ãƒãƒƒã‚°ã‚³ãƒ¼ãƒ‰
 	//GUI.update(database);
 	//GUI.display();
-	//cout << database.search_x("c") << endl; //‚±‚±‚ğƒfƒoƒbƒO‚µ‚½‚¢ŠÖ”‚É•Ï‚¦‚éB
+	//cout << database.search_x("c") << endl; //ã“ã“ã‚’ãƒ‡ãƒãƒƒã‚°ã—ãŸã„é–¢æ•°ã«å¤‰ãˆã‚‹ã€‚
 
 	//GUI.GUI_main(database);
 	getdata(database);
-	/*  input output ‚ÌƒeƒXƒg‚æ‚¤
+	/*  input output ã®ãƒ†ã‚¹ãƒˆã‚ˆã†
 	database.file_output();
 	database.file_input();
 	*/
-	sort_inf(true,1,false,false);//true‚ªyA¸‡A•¶š—ñ
+	sort_inf(true,1,false,false);//trueãŒyã€æ˜‡é †ã€æ–‡å­—åˆ—
 	return 0;
 
 }
