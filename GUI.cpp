@@ -28,10 +28,10 @@ void GUI::display(database input) {
 	}
 	cout << endl;
 
-	for (int i = 0; i < (int)input.komoku_x.size(); i++) {
+	for (int i = 0; i < (int)input.komoku_y.size(); i++) {
 		cout << input.komoku_y[i] << " ";
-		for(int j = 0; j < box - (int)input.komoku_y.size();j++)cout << " ";
-		for (int j = 0; j < (int)input.komoku_y.size(); j++) {
+		for(int j = 0; j < box - (int)input.komoku_x.size();j++)cout << " ";
+		for (int j = 0; j < (int)input.komoku_x.size(); j++) {
 			cout << input.table[i][j] << " ";
 			for(int k = 0; k < boxx[j] - (int)input.table[i][j].size();k++) cout << " ";
 		}
