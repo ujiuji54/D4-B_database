@@ -76,6 +76,21 @@ void GUI::add_komoku(database& input) {
 	}
 }
 
+void GUI::remove_komoku(database& input){
+	int xory;
+	string name;
+	cout<<"横の項目を削除するなら0,縦の項目を削除するなら1を入力してください"<<endl;
+	cin>>xory;
+	cout<<"削除する項目名を入力してください"<<endl;
+	cin>>name;
+	if(xory==0){
+		input.remove_komoku_x(name);
+	}
+	if(xory==1){
+		input.remove_komoku_y(name);
+	}
+}
+
 void GUI::sort(database& input) {
 	bool xory;
 	string name;
@@ -127,16 +142,17 @@ void GUI::file_output(database input) {
 
 void GUI::GUI_main(database input) {
 	int mode=0;
-	while (mode!=6) {
+	while (mode!=7) {
 		update(input);
 		display(input);
 		//cout << "利用したい機能を選択してください" << endl;
 		cout << "1  : 情報の書き込み" << endl;
 		cout << "2  : データベース項目の追加" << endl;
-		cout << "3  : 項目の並び替え" << endl;
-		cout << "4  : 項目の検索" << endl;
-		cout << "5  : データベース情報をファイル出力" << endl;
-		cout << "6  : 終了" << endl;
+		cout << "3  : データベース項目の削除" << endl;
+		cout << "4  : 項目の並び替え" << endl;
+		cout << "5  : 項目の検索" << endl;
+		cout << "6  : データベース情報をファイル出力" << endl;
+		cout << "7  : 終了" << endl;
 		cin >> mode; //mode選択
 		switch (mode){
 		case 1:
@@ -146,15 +162,18 @@ void GUI::GUI_main(database input) {
 			add_komoku(input);
 			break;
 		case 3:
-			sort(input);
+			remove_komoku(input);
 			break;
 		case 4:
-			search(input);
+			sort(input);
 			break;
 		case 5:
-			file_output(input);
+			search(input);
 			break;
 		case 6:
+			file_output(input);
+			break;
+		case 7:
 			cout << "終了します．" << endl;
 			break;
 		default:
