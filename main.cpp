@@ -22,7 +22,7 @@ int main() {
 	database.file_output();
 	database.file_input();
 	*/
-	sort_inf();
+	sort_inf(true,1,false,false);//true‚ªyA¸‡A•¶š—ñ
 	return 0;
 
 }

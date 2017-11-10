@@ -16,6 +16,7 @@ int sort_y;//yの項目をソートするとき
 int y;
 int x;
 bool mode;//trueが文字列falseが整数
+bool updown;
 
 void getdata(database input){
 	table = input.return_table();
@@ -29,7 +30,7 @@ struct node{
 	struct node *right;
 };
 
-bool compare_x(int x_comp){
+bool compare_x_down(int x_comp){
 	int comp=0;
 	if(mode){
 		while(1){
@@ -48,6 +49,25 @@ bool compare_x(int x_comp){
 		}
 	}
 }
+bool compare_x_up(int x_comp){
+	int comp=0;
+	if(mode){
+		while(1){
+			if(table[sort_y][x_comp][comp]<table[sort_y][x][comp]) return true;
+			else if(table[sort_y][x_comp][comp]>table[sort_y][x][comp]) return false;
+			else if(table[sort_y][x_comp][comp]==0&&table[sort_y][x][comp]==0) return true;
+			else comp +=1;
+		}
+	}	
+	else{
+		while(1){
+			if(stoi(table[sort_y][x_comp])<stoi(table[sort_y][x])) return true;
+			else if(stoi(table[sort_y][x_comp])>stoi(table[sort_y][x])) return false;
+			else if(table[sort_y][x][0]==0) return true;
+			else return true;
+		}
+	}
+}
 struct node *insert_x(struct node *yp){
 	 if(yp==NULL){
 		yp=(struct node *)malloc(sizeof(struct node));
@@ -56,9 +76,16 @@ struct node *insert_x(struct node *yp){
 	   yp->left=NULL;
 		yp->right=NULL;
 	}
-	else if(compare_x(yp->str)) yp->left = insert_x(yp->left);
-	else yp->right = insert_x(yp->right);
-	return yp;
+	else if(updown){
+		if(compare_x_up(yp->str)) yp->left = insert_x(yp->left);
+		else yp->right = insert_x(yp->right);
+		return yp;
+	}
+	else{
+		if(compare_x_down(yp->str)) yp->left = insert_x(yp->left);
+		else yp->right = insert_x(yp->right);
+		return yp;
+	}
 }
 
 void treeprint_x(struct node *yp,int y_val){
@@ -79,7 +106,7 @@ void treeprint_komoku_x(struct node *yp){
 	}
 }
 
-bool compare_y(int y_comp){
+bool compare_y_down(int y_comp){
 	int comp=0;
 	if(mode){
 		while(1){
@@ -98,6 +125,25 @@ bool compare_y(int y_comp){
 		}
 	}
 }
+bool compare_y_up(int y_comp){
+	int comp=0;
+	if(mode){
+		while(1){
+			if(table[y_comp][sort_x][comp]<table[y][sort_x][comp]) return true;
+			else if(table[y_comp][sort_x][comp]>table[y][sort_x][comp]) return false;
+			else if(table[y_comp][sort_x][comp]==0&&table[y][sort_x][comp]==0) return true;
+			else comp +=1;
+		}
+	}	
+	else{
+		while(1){
+			if(stoi(table[y_comp][sort_x])<stoi(table[y][sort_x])) return true;
+			else if(stoi(table[y_comp][sort_x])>stoi(table[y][sort_x])) return false;
+			else if(table[y_comp][sort_x][0]==0&&table[y][sort_x][0]==0) return true;
+			else return true;
+		}
+	}
+}
 struct node *insert_y(struct node *xp){
 	 if(xp==NULL){
 		xp=(struct node *)malloc(sizeof(struct node));
@@ -106,9 +152,16 @@ struct node *insert_y(struct node *xp){
 	   xp->left=NULL;
 		xp->right=NULL;
 	}
-	else if(compare_y(xp->str)) xp->left = insert_y(xp->left);
-	else xp->right = insert_y(xp->right);
-	return xp;
+	else if(updown){
+		if(compare_y_up(xp->str)) xp->left = insert_y(xp->left);
+		else xp->right = insert_y(xp->right);
+		return xp;
+	}
+	else{
+		if(compare_y_down(xp->str)) xp->left = insert_y(xp->left);
+		else xp->right = insert_y(xp->right);
+		return xp;
+	}
 }
 
 void treeprint_y(struct node *xp){
@@ -141,20 +194,21 @@ void sort_komoku_y(){
 	cout<<endl;
 	treeprint_y(root);
 }
-void sort_inf(bool p,int val,bool p2){
-	if(p){ //Y
-		if(p2) //降順
-		else //昇順
-	}
-	else{ //x
-		if(p2) //降順
-		else //昇順
-	}
+void sort_inf(bool p,int val,bool p2,bool p3){ //pがxy p2が降順昇順 p3が数字か文字か
 	y=0;
 	x=0;
-	mode=false;
-	sort_x=0;
-	sort_y=0;
-	sort_komoku_x();
+	mode=p3;	
+	updown=p2;
+	if(p){ //Y
+		//sort_y=val;
+		sort_x=val;
+		sort_komoku_y();
+	}
+	else{ //x
+		//sort_x=val;
+		sort_y=val;
+		sort_komoku_x();
+	}
+	//sort_komoku_x();
 	//sort_komoku_y();
 }
