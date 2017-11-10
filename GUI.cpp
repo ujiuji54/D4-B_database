@@ -79,6 +79,7 @@ void GUI::add_komoku(database& input) {
 void GUI::sort(database& input) {
 	bool xory;
 	string name;
+	int val;
 	bool order;
 	cout<<"横の項目を並び替えるなら0,縦の項目を並び替えるなら1を入力してください"<<endl;
 	cin>>xory;
@@ -86,9 +87,12 @@ void GUI::sort(database& input) {
 	cin>>name;
 	cout<<"昇順にしたいなら0,降順にしたいなら1を入力してください"<<endl;
 	cin>>order;
-	getdata(input);
-	//sort_inf(xory,name,order);
 	//database.sort(xory,name,order);
+	
+	getdata(input);
+	if(xory==false)val=input.search_x(name);
+	else val=input.search_y(name);
+	sort_inf(xory,val,order,0);
 }
 
 void GUI::search(database input) {
