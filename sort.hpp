@@ -11,6 +11,8 @@ vector<string> komoku_y;
 vector<string> komoku_x;
 vector<vector<string> > table;
 
+string some;
+
 int sort_x;//xの項目をソートするとき
 int sort_y;//yの項目をソートするとき
 int y;
@@ -19,7 +21,7 @@ bool mode;//trueが文字列falseが整数
 bool updown;
 ofstream outputfile;
  
-void getdata(database input){
+void getdata(database& input){
 	table = input.return_table();
 	komoku_x = input.return_komoku_x();
 	komoku_y = input.return_komoku_y();
@@ -195,6 +197,26 @@ void sort_komoku_x(){
 		//cout<<endl;
 	}
 }
+/*
+void set_x(struct node *set){
+	if(yp!=NULL){
+		set_x(xp->left);
+		if(set->str!=x){
+			for(int i=0;i<komoku_y.size();i++){
+				some=komoku_x[x];
+				komoku_x[x]=
+			}	
+		}
+		set_x(xp->right);
+	}
+}
+void set_y(struct node *set){
+	if(yp!=NULL){
+		set_y(xp->left);
+		if(set->str!=y)
+		set_y(xp->right);
+	}
+}*/
 void sort_komoku_y(){
 	struct node *root;
 	root=NULL;
@@ -203,6 +225,7 @@ void sort_komoku_y(){
 	//cout<<endl;
 	treeprint_y(root);
 }
+	
 void sort_inf(bool p,int val,bool p2,bool p3){ //pがxy p2が降順昇順 p3が数字か文字か
 	outputfile.open("sort.txt");
 	y=0;

@@ -59,9 +59,9 @@ void database::remove_komoku_y(string input) {
 	table.erase(table.begin()+num);
 }	
 
-void database::file_output() {
+void database::file_output(string name) {
 	//ƒtƒ@ƒCƒ‹o—Í
-	ofstream outputfile("test.txt");
+	ofstream outputfile(name);
 	int size_x=(int)komoku_x.size();
 	int size_y=(int)komoku_y.size();
 	for(int i=0;i<size_x;i++) outputfile<<" "<<komoku_x[i];
@@ -73,14 +73,14 @@ void database::file_output() {
 	outputfile.close();
 }
 
-void database::file_input(){
+void database::file_input(string name){
 	char c = 0;
 	string s;
 	vector<string> data_str;
 	komoku_x.clear();//”O‚Ì‚½‚ßclear
 	komoku_y.clear();//”O‚Ì‚½‚ßclear
 	table.clear();//”O‚Ì‚½‚ßclear
-	ifstream inputfile("test.txt");
+	ifstream inputfile(name);
 	//ofstream outputfile("test2.txt");
 	while (1) {
 		inputfile >> s;
@@ -100,6 +100,7 @@ void database::file_input(){
 	}
 	int size_x = (int)komoku_x.size();
 	int size_y = (int)komoku_y.size();
+	/*
 	for (int i = 0; i<size_x; i++) cout<< " " << komoku_x[i];
 	for (int i = 0; i<size_y; i++) {
 		cout << endl;
@@ -108,6 +109,7 @@ void database::file_input(){
 
 	}
 	cout << endl;
+	*/
 	inputfile.close();
 	//outputfile.close();
 }
