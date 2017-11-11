@@ -17,7 +17,8 @@ int y;
 int x;
 bool mode;//trueが文字列falseが整数
 bool updown;
-
+ofstream outputfile;
+ 
 void getdata(database input){
 	table = input.return_table();
 	komoku_x = input.return_komoku_x();
@@ -83,12 +84,12 @@ struct node *insert_x(struct node *yp){
 		yp->right=NULL;
 	}
 	else if(updown){
-		if(compare_x_up(yp->str)) yp->left = insert_x(yp->left);
+		if(compare_x_down(yp->str)) yp->left = insert_x(yp->left);
 		else yp->right = insert_x(yp->right);
 		return yp;
 	}
 	else{
-		if(compare_x_down(yp->str)) yp->left = insert_x(yp->left);
+		if(compare_x_up(yp->str)) yp->left = insert_x(yp->left);
 		else yp->right = insert_x(yp->right);
 		return yp;
 	}
@@ -97,7 +98,7 @@ struct node *insert_x(struct node *yp){
 void treeprint_x(struct node *yp,int y_val){
 	if(yp!=NULL){
 		treeprint_x(yp->left,y_val);
-		cout<<" "<<table[y_val][yp->str];
+		outputfile<<" "<<table[y_val][yp->str];
 	     	//for(int i=0;i<komoku_y.size();i++)cout << " "<<table[i][y->str];
 	       	treeprint_x(yp->right,y_val);
 	}
@@ -106,7 +107,7 @@ void treeprint_x(struct node *yp,int y_val){
 void treeprint_komoku_x(struct node *yp){
 	if(yp!=NULL){
 		treeprint_komoku_x(yp->left);
-		cout<<" "<<komoku_x[yp->str];
+		outputfile<<" "<<komoku_x[yp->str];
 	     	//for(int i=0;i<komoku_y.size();i++)cout << " "<<table[i][y->str];
 	       	treeprint_komoku_x(yp->right);
 	}
@@ -159,12 +160,12 @@ struct node *insert_y(struct node *xp){
 		xp->right=NULL;
 	}
 	else if(updown){
-		if(compare_y_up(xp->str)) xp->left = insert_y(xp->left);
+		if(compare_y_down(xp->str)) xp->left = insert_y(xp->left);
 		else xp->right = insert_y(xp->right);
 		return xp;
 	}
 	else{
-		if(compare_y_down(xp->str)) xp->left = insert_y(xp->left);
+		if(compare_y_up(xp->str)) xp->left = insert_y(xp->left);
 		else xp->right = insert_y(xp->right);
 		return xp;
 	}
@@ -173,9 +174,10 @@ struct node *insert_y(struct node *xp){
 void treeprint_y(struct node *xp){
 	if(xp!=NULL){
 		treeprint_y(xp->left);
-		cout<<komoku_y[xp->str];
-	   for(int i=0;i<komoku_x.size();i++)cout << " "<<table[xp->str][i];
-		cout<<endl;
+		outputfile<<endl;
+		outputfile<<komoku_y[xp->str];
+	   for(int i=0;i<komoku_x.size();i++)outputfile << " "<<table[xp->str][i];
+		//cout<<endl;
 	   treeprint_y(xp->right);
 	}
 }
@@ -185,36 +187,39 @@ void sort_komoku_x(){
 	root=NULL;
 	for(auto i :komoku_x) root=insert_x(root);
 	treeprint_komoku_x(root);
-	cout << endl;
+	//cout << endl;
 	for(int i=0;i<komoku_y.size();i++) {
-		cout<<komoku_y[i];
+		outputfile<<endl;
+		outputfile<<komoku_y[i];
 		treeprint_x(root,i);
-		cout<<endl;
+		//cout<<endl;
 	}
 }
 void sort_komoku_y(){
 	struct node *root;
 	root=NULL;
 	for(auto i :komoku_y) root=insert_y(root);
-	for(auto i :komoku_x) cout <<" "<<i;
-	cout<<endl;
+	for(auto i :komoku_x) outputfile <<" "<<i;
+	//cout<<endl;
 	treeprint_y(root);
 }
 void sort_inf(bool p,int val,bool p2,bool p3){ //pがxy p2が降順昇順 p3が数字か文字か
+	outputfile.open("sort.txt");
 	y=0;
 	x=0;
 	mode=p3;	
 	updown=p2;
 	if(p){ //Y
 		//sort_y=val;
-		sort_x=val;
-		sort_komoku_y();
-	}
-	else{ //x
-		//sort_x=val;
 		sort_y=val;
 		sort_komoku_x();
 	}
+	else{ //x
+		//sort_x=val;
+		sort_x=val;
+		sort_komoku_y();
+	}
+	outputfile.close();
 	//sort_komoku_x();
 	//sort_komoku_y();
 }
