@@ -180,6 +180,7 @@ void GUI::GUI_main(database& input) {
 			break;
 		case 8:
 			xy_conversion(input);
+			break;
 		default:
 			cout << "無効な数字です．入力し直してください" << endl;
 			break;
