@@ -104,12 +104,12 @@ void GUI::sort(database& input) {
 	cin>>order;
 	//database.sort(xory,name,order);
 	
-	getdata(input);
+	//getdata(input);
 	if(xory==false)val=input.search_x(name);
 	else val=input.search_y(name);
-	sort_inf(xory,val,order,0);
-	setdata(input);
-	input.file_input("sort.txt");
+	sort_inf(input,xory,val,order,0);
+	//setdata(input);
+	//input.file_input("sort.txt");
 }
 
 void GUI::search(database& input) {

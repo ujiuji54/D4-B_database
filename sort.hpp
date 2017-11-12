@@ -184,10 +184,29 @@ void treeprint_y(struct node *xp){
 	}
 }
 
-void sort_komoku_x(){
+void set_x(struct node *set,database& output){
+	if(set!=NULL){
+		set_x(set->left,output);
+		output.komoku_x[x]=komoku_x[set->str];
+		for(int i=0;i<komoku_y.size();i++) output.table[i][x]=table[i][set->str];
+		x++;
+		set_x(set->right,output);
+	}
+}
+void set_y(struct node *set,database& output){
+	if(set!=NULL){
+		set_y(set->left,output);
+		output.komoku_y[y]=komoku_y[set->str];
+		for(int i=0;i<komoku_x.size();i++) output.table[y][i]=table[set->str][i];
+		y++;
+		set_y(set->right,output);
+	}
+}
+void sort_komoku_x(database& input){
 	struct node *root;
 	root=NULL;
 	for(auto i :komoku_x) root=insert_x(root);
+	/*
 	treeprint_komoku_x(root);
 	//cout << endl;
 	for(int i=0;i<komoku_y.size();i++) {
@@ -196,53 +215,39 @@ void sort_komoku_x(){
 		treeprint_x(root,i);
 		//cout<<endl;
 	}
+	*/
+	x=0;y=0;
+	set_x(root,input);
 }
-/*
-void set_x(struct node *set){
-	if(yp!=NULL){
-		set_x(xp->left);
-		if(set->str!=x){
-			for(int i=0;i<komoku_y.size();i++){
-				some=komoku_x[x];
-				komoku_x[x]=
-			}	
-		}
-		set_x(xp->right);
-	}
-}
-void set_y(struct node *set){
-	if(yp!=NULL){
-		set_y(xp->left);
-		if(set->str!=y)
-		set_y(xp->right);
-	}
-}*/
-void sort_komoku_y(){
+void sort_komoku_y(database& input){
 	struct node *root;
 	root=NULL;
 	for(auto i :komoku_y) root=insert_y(root);
+	/*
 	for(auto i :komoku_x) outputfile <<" "<<i;
 	//cout<<endl;
 	treeprint_y(root);
+	*/
+	x=0;y=0;
+	set_y(root,input);
 }
 	
-void sort_inf(bool p,int val,bool p2,bool p3){ //pがxy p2が降順昇順 p3が数字か文字か
-	outputfile.open("sort.txt");
+void sort_inf(database& input,bool p,int val,bool p2,bool p3){ //pがxy p2が降順昇順 p3が数字か文字か
+	getdata(input);
+	//outputfile.open("sort.txt");
 	y=0;
 	x=0;
 	mode=p3;	
 	updown=p2;
 	if(p){ //Y
-		//sort_y=val;
 		sort_y=val;
-		sort_komoku_x();
+		sort_komoku_x(input);
 	}
 	else{ //x
-		//sort_x=val;
 		sort_x=val;
-		sort_komoku_y();
+		sort_komoku_y(input);
 	}
-	outputfile.close();
+	//outputfile.close();
 	//sort_komoku_x();
 	//sort_komoku_y();
 }
