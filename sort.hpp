@@ -251,3 +251,19 @@ void sort_inf(database& input,bool p,int val,bool p2,bool p3){ //pがxy p2が降
 	//sort_komoku_x();
 	//sort_komoku_y();
 }
+void xy_conversion(database& input){
+	getdata(input);
+	input.komoku_y.clear();
+	input.komoku_x.clear();
+	input.table.clear();
+	for(auto i:komoku_x) input.komoku_y.push_back(i);
+	for(auto i:komoku_y) input.komoku_x.push_back(i);
+	vector<string> table2;
+	for(int i=0;i<komoku_x.size();i++){
+		for(int j=0;j<komoku_y.size();j++){
+			table2.push_back(table[j][i]);
+		}
+		input.table.push_back(table2);
+		table2.clear();
+	}
+}

@@ -154,6 +154,7 @@ void GUI::GUI_main(database& input) {
 		cout << "5  : 項目の検索" << endl;
 		cout << "6  : データベース情報をファイル出力" << endl;
 		cout << "7  : 終了" << endl;
+		cout << "8  : xy反転" <<endl;
 		cin >> mode; //mode選択
 		switch (mode){
 		case 1:
@@ -177,6 +178,8 @@ void GUI::GUI_main(database& input) {
 		case 7:
 			cout << "終了します．" << endl;
 			break;
+		case 8:
+			xy_conversion(input);
 		default:
 			cout << "無効な数字です．入力し直してください" << endl;
 			break;
