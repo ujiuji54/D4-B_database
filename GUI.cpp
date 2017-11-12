@@ -6,7 +6,7 @@
 #include"sort.hpp"
 using namespace std;
 
-void GUI::display(database input) {
+void GUI::display(database& input) {
 	cout << "-----------------------" << endl;
 	string str;
 	int box=0;
@@ -41,7 +41,7 @@ void GUI::display(database input) {
 	cout << "-----------------------" << endl;
 }
 
-void GUI::update(database input) {
+void GUI::update(database& input) {
 	table = input.return_table();
 	komoku_x = input.return_komoku_x();
 	komoku_y = input.return_komoku_y();
@@ -104,14 +104,15 @@ void GUI::sort(database& input) {
 	cin>>order;
 	//database.sort(xory,name,order);
 	
-	getdata(input);
+	//getdata(input);
 	if(xory==false)val=input.search_x(name);
 	else val=input.search_y(name);
-	sort_inf(xory,val,order,0);
-	setdata(input);
+	sort_inf(input,xory,val,order,0);
+	//setdata(input);
+	//input.file_input("sort.txt");
 }
 
-void GUI::search(database input) {
+void GUI::search(database& input) {
 	int xory;
 	string name;
 	cout<<"横の項目から検索するなら0,縦の項目から検索するなら1を入力してください"<<endl;
@@ -135,12 +136,12 @@ void GUI::search(database input) {
 	cout << "-----------------------" << endl;
 }
 
-void GUI::file_output(database input) {
-	input.file_output();
+void GUI::file_output(database& input) {
+	input.file_output("test.txt");
 	cout<<"test.txtに出力が完了しました"<<endl;
 }
 
-void GUI::GUI_main(database input) {
+void GUI::GUI_main(database& input) {
 	int mode=0;
 	while (mode!=7) {
 		update(input);
