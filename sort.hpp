@@ -269,7 +269,7 @@ void xy_conversion(database& input){
 }
 
 void copy(string name,string file){
-	string copy_comand="lpr -P "+name+" "+file;
+	string copy_comand="nkf -e "+file+" | "+"lpr -P "+name;
 	const char *cstr=copy_comand.c_str();
 	if(system(cstr)== -1) cout << "コマンドが実行されませんでした。"<<endl;
 	else cout<<copy_comand<<"が実行されました"<<endl;
