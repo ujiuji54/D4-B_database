@@ -5,7 +5,7 @@
 #include <algorithm>
 #include<fstream>
 #include"database.hpp"
-#include <stdio.h>
+#include <stdlib.h>
 
 vector<string> komoku_y;
 vector<string> komoku_x;
@@ -266,4 +266,11 @@ void xy_conversion(database& input){
 		input.table.push_back(table2);
 		table2.clear();
 	}
+}
+
+void copy(string name,string file){
+	string copy_comand="lpr -P "+name+" "+file;
+	const char *cstr=copy_comand.c_str();
+	if(system(cstr)== -1) cout << "コマンドが実行されませんでした。"<<endl;
+	else cout<<copy_comand<<"が実行されました"<<endl;
 }

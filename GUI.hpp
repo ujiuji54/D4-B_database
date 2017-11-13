@@ -22,4 +22,5 @@ public:
 	void search(database& input);//データベースから項目を探す(database::search_x()かdatabase::search_y()を使う)
 	void file_output(database& input);//データベースのデータをファイルに出力する(database::file_out()を使う)
 	void file_input(database& input);
+	void file_copy();
 };
