@@ -5,6 +5,7 @@
 #include<fstream>
 #include"database.hpp"
 #include <stdio.h>
+//#include <locale.h>
 using namespace std;
 vector<vector<string> > database::return_table() { return table; }
 vector<string> database::return_komoku_x() { return komoku_x; }
@@ -72,28 +73,62 @@ void database::file_output(string name) {
 	}
 	outputfile.close();
 }
-
+int database::strlen_conversion(string str){
+	int len,len2,i;
+	len=0;
+	len2=0;
+	i=0;
+	while(str[i]!=0){		
+		if(str[i]<128)len+=1;
+		else len2+=1;
+		i+=1;
+	}
+	return len+(len2/3*2);
+}
 void database::file_output2(string name){
 	ofstream outputfile(name);	
 	string str;
 	int box=0;
+	int box2=0;
+	int k=0;
+	int len;
 	for (int i = 0; i < komoku_y.size(); i++){
-		if(komoku_y[i].size() > box) box = komoku_y[i].size(); 
-	}
-	
-	int boxx[komoku_x.size()];
-	for (int i = 0; i < komoku_x.size();i++)boxx[i]=0;//boxx[]‚Ì‰Šú‰»
-	for (int i = 0; i < komoku_y.size(); i++){
-		for (int j = 0; j < komoku_x.size(); j++){
-			if(boxx[j] < table[i][j].size()) boxx[j] = table[i][j].size();
+		if(strlen_conversion(komoku_y[i]) > box) {
+			k=0;
+			len=0;
+			box2=0;
+			while(komoku_y[i][k]!=0){
+				if(komoku_y[i][k]<128)box2+=1;
+				else len+=1;
+				k+=1;
+			}
+			box=box2+(len/3*2);
 		}
 	}
-	
+	int boxx[komoku_x.size()];
+	int boxx2;
+	for (int i = 0; i < komoku_x.size();i++) boxx[i]=0;//boxx[]‚Ì‰Šú‰»
+	for (int i = 0; i < komoku_y.size(); i++){
+		for (int j = 0; j < komoku_x.size(); j++){
+			if(boxx[j]<strlen_conversion(table[i][j])){
+				k=0;
+				len=0;
+				boxx2=0;
+				while(table[i][j][k]!=0){
+					if(table[i][j][k]<128)boxx2+=1;
+					else len+=1;;
+					k+=1;
+				}
+				boxx[j]=boxx2+(len/3*2);
+			}
+			//if(boxx[j] < table[i][j].size()) boxx[j] = table[i][j].size();
+		}
+	}
 	for (int i = 0; i < box+1; i++) outputfile<<" ";
 	outputfile << komoku_x[0];
 	for (int i = 1; i < komoku_x.size(); i++){
 		//outputfile << komoku_x[i] << " ";
-		for(int j = 0; j < boxx[i-1] - komoku_x[i-1].size();j++) outputfile << " ";
+		for(int j = 0; j < boxx[i-1] - strlen_conversion(komoku_x[i-1]);j++) outputfile << " ";
 		outputfile << " "<<komoku_x[i];
 	}
 	//cout << endl;
@@ -101,10 +136,10 @@ void database::file_output2(string name){
 	for (int i = 0; i < komoku_y.size(); i++) {
 		outputfile<<endl;
 		outputfile << komoku_y[i] << " ";
-		for(int j = 0; j < box - komoku_y[i].size();j++)outputfile << " ";
+		for(int j = 0; j < box - strlen_conversion(komoku_y[i]);j++)outputfile << " ";
 		outputfile << table[i][0];
 		for (int j = 1; j < komoku_x.size(); j++) {
-			for(int k = 0; k < boxx[j-1] - table[i][j-1].size();k++) outputfile << " ";
+			for(int k = 0; k < boxx[j-1] - strlen_conversion(table[i][j-1]);k++) outputfile << " ";
 			outputfile <<" "<<table[i][j];
 			//for(int k = 0; k < boxx[j] - table[i][j].size();k++) outputfile << " ";
 		}

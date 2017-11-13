@@ -95,19 +95,21 @@ void GUI::sort(database& input) {
 	bool xory;
 	string name;
 	int val;
-	bool order;
+	bool order,mode;
 	cout<<"横の項目を並び替えるなら0,縦の項目を並び替えるなら1を入力してください"<<endl;
 	cin>>xory;
 	cout<<"並び替える項目の名前を入力してください"<<endl;
 	cin>>name;
 	cout<<"昇順にしたいなら0,降順にしたいなら1を入力してください"<<endl;
 	cin>>order;
+	cout<<"数字でソートなら0,文字列でソートなら1を入力してください"<<endl;
+	cin>>mode;
 	//database.sort(xory,name,order);
 	
 	//getdata(input);
 	if(xory==false)val=input.search_x(name);
 	else val=input.search_y(name);
-	sort_inf(input,xory,val,order,0);
+	sort_inf(input,xory,val,order,mode);
 	//setdata(input);
 	//input.file_input("sort.txt");
 }
@@ -137,13 +139,19 @@ void GUI::search(database& input) {
 }
 
 void GUI::file_output(database& input) {
-	input.file_output2("test.txt");
-	cout<<"test.txtに出力が完了しました"<<endl;
+	string name;
+	cout<<"出力するファイル名=";
+	cin>>name;
+	input.file_output2(name);
+	cout<<name<<"に出力が完了しました"<<endl;
 }
 
 void GUI::file_input(database& input){
-	input.file_input("test.txt");
-	cout<<"test.txtに出力が完了しました"<<endl;
+	string name;
+	cout<<"入力するファイル名=";
+	cin>>name;
+	input.file_input(name);
+	cout<<name<<"ファイルを読み込みました"<<endl;
 }
 
 void GUI::file_copy(){

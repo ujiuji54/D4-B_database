@@ -9,12 +9,12 @@ class database{
 private:
 public:
 	vector<vector<string> > table = {
-		{"9","2","3000000"},
-		{"4","5","60000"},
-		{"7","8","9000000"},
+		{"9","vector","3000000"},
+		{"4","iostream","60000"},
+		{"7","string","9000000"},
 	};
 	vector<string> komoku_x = {"a","b","c"};
-	vector<string> komoku_y = { "d","e","f" };
+	vector<string> komoku_y = { "d","e","æœ€å¾Œã®åˆ—" };
 	//ƒfƒoƒbƒO—pƒf[ƒ^‚ğŠi”[
 	vector<vector<string> > return_table();
 	vector<string> return_komoku_x();
@@ -24,6 +24,7 @@ public:
 	void add_komoku_y(string input);//€–Úy’Ç‰Á(input:€–Ú–¼)
 	void remove_komoku_x(string input);
 	void remove_komoku_y(string input);
+	int strlen_conversion(string str);
 	void file_output(string name);//ƒtƒ@ƒCƒ‹o—Í
 	void file_output2(string name);
 	void file_input(string name);//ƒtƒ@ƒCƒ‹‚©‚çƒf[ƒ^‚Ìæ“¾
