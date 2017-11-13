@@ -25,6 +25,7 @@ public:
 	void remove_komoku_x(string input);
 	void remove_komoku_y(string input);
 	void file_output(string name);//ファイル出力
+	void file_output2(string name);
 	void file_input(string name);//ファイルからデータの取得
 	int search_x(string name); //項目xから名前を検索(name:項目名)
 	int search_y(string name); //項目yから名前を検索(name:項目名)
