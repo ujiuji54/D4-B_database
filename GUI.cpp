@@ -137,8 +137,23 @@ void GUI::search(database& input) {
 }
 
 void GUI::file_output(database& input) {
-	input.file_output("test.txt");
+	input.file_output2("test.txt");
 	cout<<"test.txtに出力が完了しました"<<endl;
+}
+
+void GUI::file_input(database& input){
+	input.file_input("test.txt");
+	cout<<"test.txtに出力が完了しました"<<endl;
+}
+
+void GUI::file_copy(){
+	string str;
+	string str2;
+	cout<<"プリンタ名＝";
+	cin>>str;
+	cout<<"ファイル名＝";
+	cin>>str2;
+	copy(str,str2);
 }
 
 void GUI::GUI_main(database& input) {
@@ -154,6 +169,9 @@ void GUI::GUI_main(database& input) {
 		cout << "5  : 項目の検索" << endl;
 		cout << "6  : データベース情報をファイル出力" << endl;
 		cout << "7  : 終了" << endl;
+		cout << "8  : xy反転" <<endl;
+      cout <<"9  : データベース情報のファイル入力" << endl;
+		cout <<"10 : テキストファイル印刷" <<endl;		
 		cin >> mode; //mode選択
 		switch (mode){
 		case 1:
@@ -172,10 +190,20 @@ void GUI::GUI_main(database& input) {
 			search(input);
 			break;
 		case 6:
+
 			file_output(input);
 			break;
 		case 7:
 			cout << "終了します．" << endl;
+			break;
+		case 8:
+			xy_conversion(input);
+			break;
+		case 9:
+			file_input(input);
+			break;
+		case 10:
+			file_copy();
 			break;
 		default:
 			cout << "無効な数字です．入力し直してください" << endl;

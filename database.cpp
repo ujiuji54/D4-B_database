@@ -73,6 +73,45 @@ void database::file_output(string name) {
 	outputfile.close();
 }
 
+void database::file_output2(string name){
+	ofstream outputfile(name);	
+	string str;
+	int box=0;
+	for (int i = 0; i < komoku_y.size(); i++){
+		if(komoku_y[i].size() > box) box = komoku_y[i].size(); 
+	}
+	
+	int boxx[komoku_x.size()];
+	for (int i = 0; i < komoku_x.size();i++)boxx[i]=0;//boxx[]‚Ì‰Šú‰»
+	for (int i = 0; i < komoku_y.size(); i++){
+		for (int j = 0; j < komoku_x.size(); j++){
+			if(boxx[j] < table[i][j].size()) boxx[j] = table[i][j].size();
+		}
+	}
+	
+	for (int i = 0; i < box+1; i++) outputfile<<" ";
+	outputfile << komoku_x[0];
+	for (int i = 1; i < komoku_x.size(); i++){
+		//outputfile << komoku_x[i] << " ";
+		for(int j = 0; j < boxx[i-1] - komoku_x[i-1].size();j++) outputfile << " ";
+		outputfile << " "<<komoku_x[i];
+	}
+	//cout << endl;
+
+	for (int i = 0; i < komoku_y.size(); i++) {
+		outputfile<<endl;
+		outputfile << komoku_y[i] << " ";
+		for(int j = 0; j < box - komoku_y[i].size();j++)outputfile << " ";
+		outputfile << table[i][0];
+		for (int j = 1; j < komoku_x.size(); j++) {
+			for(int k = 0; k < boxx[j-1] - table[i][j-1].size();k++) outputfile << " ";
+			outputfile <<" "<<table[i][j];
+			//for(int k = 0; k < boxx[j] - table[i][j].size();k++) outputfile << " ";
+		}
+		//cout << endl;
+	}
+}
+
 void database::file_input(string name){
 	char c = 0;
 	string s;
