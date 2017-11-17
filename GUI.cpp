@@ -4,6 +4,8 @@
 #include"database.hpp"
 #include"GUI.hpp"
 #include"sort.hpp"
+#include <cctype>
+#include <algorithm>
 using namespace std;
 
 void GUI::display(database& input) {
@@ -166,7 +168,11 @@ void GUI::file_copy(){
 
 void GUI::GUI_main(database& input) {
 	int mode=0;
+	string mode2;
+	bool mode_p;
+	char c[1023];
 	while (mode!=7) {
+		mode_p=true;
 		update(input);
 		display(input);
 		//cout << "利用したい機能を選択してください" << endl;
@@ -180,7 +186,14 @@ void GUI::GUI_main(database& input) {
 		cout << "8  : xy反転" <<endl;
       cout <<"9  : データベース情報のファイル入力" << endl;
 		cout <<"10 : テキストファイル印刷" <<endl;		
-		cin >> mode; //mode選択
+		cin.getline(c,sizeof(c)); //mode選択
+		mode2=string(c);
+		for(int i=0;i<mode2.size();i++) {
+			if(mode2[i]<'0'||mode2[i]>'9') mode_p=false;
+			if(i==3) mode_p=false; 
+	   }
+		if(mode_p){
+		mode=stoi(mode2);
 		switch (mode){
 		case 1:
 			write(input);
@@ -198,7 +211,6 @@ void GUI::GUI_main(database& input) {
 			search(input);
 			break;
 		case 6:
-
 			file_output(input);
 			break;
 		case 7:
@@ -217,5 +229,7 @@ void GUI::GUI_main(database& input) {
 			cout << "無効な数字です．入力し直してください" << endl;
 			break;
 		}
+		}
+		else cout << "無効な入力です．入力し直してください" << endl;
 	}
 }

@@ -51,8 +51,8 @@ bool compare_x_down(int x_comp){
 	}	
 	else{
 		while(1){
-			if(stoi(table[sort_y][x_comp])<stoi(table[sort_y][x])) return false;
-			else if(stoi(table[sort_y][x_comp])>stoi(table[sort_y][x])) return true;
+			if(stod(table[sort_y][x_comp])<stod(table[sort_y][x])) return false;
+			else if(stod(table[sort_y][x_comp])>stod(table[sort_y][x])) return true;
 			else if(table[sort_y][x][0]==0) return false;
 			else return false;
 		}
@@ -70,8 +70,8 @@ bool compare_x_up(int x_comp){
 	}	
 	else{
 		while(1){
-			if(stoi(table[sort_y][x_comp])<stoi(table[sort_y][x])) return true;
-			else if(stoi(table[sort_y][x_comp])>stoi(table[sort_y][x])) return false;
+			if(stod(table[sort_y][x_comp])<stod(table[sort_y][x])) return true;
+			else if(stod(table[sort_y][x_comp])>stod(table[sort_y][x])) return false;
 			else if(table[sort_y][x][0]==0) return true;
 			else return true;
 		}
@@ -127,8 +127,8 @@ bool compare_y_down(int y_comp){
 	}	
 	else{
 		while(1){
-			if(stoi(table[y_comp][sort_x])<stoi(table[y][sort_x])) return false;
-			else if(stoi(table[y_comp][sort_x])>stoi(table[y][sort_x])) return true;
+			if(stod(table[y_comp][sort_x])<stod(table[y][sort_x])) return false;
+			else if(stod(table[y_comp][sort_x])>stod(table[y][sort_x])) return true;
 			else if(table[y_comp][sort_x][0]==0&&table[y][sort_x][0]==0) return false;
 			else return false;
 		}
@@ -146,8 +146,8 @@ bool compare_y_up(int y_comp){
 	}	
 	else{
 		while(1){
-			if(stoi(table[y_comp][sort_x])<stoi(table[y][sort_x])) return true;
-			else if(stoi(table[y_comp][sort_x])>stoi(table[y][sort_x])) return false;
+			if(stod(table[y_comp][sort_x])<stod(table[y][sort_x])) return true;
+			else if(stod(table[y_comp][sort_x])>stod(table[y][sort_x])) return false;
 			else if(table[y_comp][sort_x][0]==0&&table[y][sort_x][0]==0) return true;
 			else return true;
 		}
