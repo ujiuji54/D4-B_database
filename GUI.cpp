@@ -11,30 +11,30 @@ void GUI::display(database& input) {
 	string str;
 	int box=0;
 	for (int i = 0; i < (int)input.komoku_y.size(); i++){
-		if((int)input.komoku_y[i].size() > box) box = (int)input.komoku_y[i].size(); 
+		if(input.strlen_conversion(komoku_y[i]) > box) box = input.strlen_conversion(komoku_y[i]); 
 	}
 	
 	int boxx[(int)input.komoku_x.size()];
 	for (int i = 0; i < (int)input.komoku_x.size();i++)boxx[i]=0;//boxx[]の初期化
 	for (int i = 0; i < (int)input.komoku_y.size(); i++){
 		for (int j = 0; j < (int)input.komoku_x.size(); j++){
-			if(boxx[j] < (int)input.table[i][j].size()) boxx[j] = (int)input.table[i][j].size();
+			if(boxx[j] < input.strlen_conversion(table[i][j])) boxx[j] = input.strlen_conversion(table[i][j]);
 		}
 	}
 	
 	for (int i = 0; i < box+1; i++) cout << " ";
 	for (int i = 0; i < (int)input.komoku_x.size(); i++){
 		cout << input.komoku_x[i] << " ";
-		for(int j = 0; j < boxx[i] - (int)input.komoku_x[i].size();j++) cout << " ";
+		for(int j = 0; j < boxx[i] - input.strlen_conversion(komoku_x[i]);j++) cout << " ";
 	}
 	cout << endl;
 
 	for (int i = 0; i < (int)input.komoku_y.size(); i++) {
 		cout << input.komoku_y[i] << " ";
-		for(int j = 0; j < box - (int)input.komoku_y[i].size();j++)cout << " ";
+		for(int j = 0; j < box - input.strlen_conversion(komoku_y[i]);j++)cout << " ";
 		for (int j = 0; j < (int)input.komoku_x.size(); j++) {
 			cout << input.table[i][j] << " ";
-			for(int k = 0; k < boxx[j] - (int)input.table[i][j].size();k++) cout << " ";
+			for(int k = 0; k < boxx[j] - input.strlen_conversion(table[i][j]);k++) cout << " ";
 		}
 		cout << endl;
 	}

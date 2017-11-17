@@ -79,7 +79,7 @@ int database::strlen_conversion(string str){
 	len2=0;
 	i=0;
 	while(str[i]!=0){		
-		if(str[i]<128)len+=1;
+		if(str[i]<128&&str[i]>=0)len+=1;
 		else len2+=1;
 		i+=1;
 	}
@@ -93,34 +93,14 @@ void database::file_output2(string name){
 	int k=0;
 	int len;
 	for (int i = 0; i < komoku_y.size(); i++){
-		if(strlen_conversion(komoku_y[i]) > box) {
-			k=0;
-			len=0;
-			box2=0;
-			while(komoku_y[i][k]!=0){
-				if(komoku_y[i][k]<128)box2+=1;
-				else len+=1;
-				k+=1;
-			}
-			box=box2+(len/3*2);
-		}
+		if(strlen_conversion(komoku_y[i]) > box) box=strlen_conversion(komoku_y[i]);
 	}
 	int boxx[komoku_x.size()];
 	int boxx2;
 	for (int i = 0; i < komoku_x.size();i++) boxx[i]=0;//boxx[]‚Ì‰Šú‰»
 	for (int i = 0; i < komoku_y.size(); i++){
 		for (int j = 0; j < komoku_x.size(); j++){
-			if(boxx[j]<strlen_conversion(table[i][j])){
-				k=0;
-				len=0;
-				boxx2=0;
-				while(table[i][j][k]!=0){
-					if(table[i][j][k]<128)boxx2+=1;
-					else len+=1;;
-					k+=1;
-				}
-				boxx[j]=boxx2+(len/3*2);
-			}
+			if(boxx[j]<strlen_conversion(table[i][j])) boxx[j]=strlen_conversion(table[i][j]);
 			//if(boxx[j] < table[i][j].size()) boxx[j] = table[i][j].size();
 		}
 	}

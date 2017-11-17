@@ -14,21 +14,21 @@ public:
 		{"7","string","9000000"},
 	};
 	vector<string> komoku_x = {"a","b","c"};
-	vector<string> komoku_y = { "d","e","æœ€å¾Œã®åˆ—" };
-	//ƒfƒoƒbƒO—pƒf[ƒ^‚ğŠi”[
+	vector<string> komoku_y = { "d","e","f" };
+	//ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´
 	vector<vector<string> > return_table();
 	vector<string> return_komoku_x();
 	vector<string> return_komoku_y();
-	void write(string x_name, string y_name, string input);//w’è‚µ‚½À•W‚Ì—v‘f‚ğ‘‚«Š·‚¦‚é
-	void add_komoku_x(string input);//€–Úx’Ç‰Á(input:€–Ú–¼)
-	void add_komoku_y(string input);//€–Úy’Ç‰Á(input:€–Ú–¼)
+	void write(string x_name, string y_name, string input);//æŒ‡å®šã—ãŸåº§æ¨™ã®è¦ç´ ã‚’æ›¸ãæ›ãˆã‚‹
+	void add_komoku_x(string input);//é …ç›®xè¿½åŠ (input:é …ç›®å)
+	void add_komoku_y(string input);//é …ç›®yè¿½åŠ (input:é …ç›®å)
 	void remove_komoku_x(string input);
 	void remove_komoku_y(string input);
 	int strlen_conversion(string str);
-	void file_output(string name);//ƒtƒ@ƒCƒ‹o—Í
+	void file_output(string name);//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
 	void file_output2(string name);
-	void file_input(string name);//ƒtƒ@ƒCƒ‹‚©‚çƒf[ƒ^‚Ìæ“¾
-	int search_x(string name); //€–Úx‚©‚ç–¼‘O‚ğŒŸõ(name:€–Ú–¼)
-	int search_y(string name); //€–Úy‚©‚ç–¼‘O‚ğŒŸõ(name:€–Ú–¼)
-	void sort(bool komoku,string name,bool order); //€–Úx‚ğƒ\[ƒg(komoku:x‚©y‚©,name:€–Ú–¼,order:¸‡‚©~‡‚©)
+	void file_input(string name);//ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã®å–å¾—
+	int search_x(string name); //é …ç›®xã‹ã‚‰åå‰ã‚’æ¤œç´¢(name:é …ç›®å)
+	int search_y(string name); //é …ç›®yã‹ã‚‰åå‰ã‚’æ¤œç´¢(name:é …ç›®å)
+	void sort(bool komoku,string name,bool order); //é …ç›®xã‚’ã‚½ãƒ¼ãƒˆ(komoku:xã‹yã‹,name:é …ç›®å,order:æ˜‡é †ã‹é™é †ã‹)
 };
