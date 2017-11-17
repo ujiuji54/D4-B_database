@@ -1,0 +1,4 @@
+       a b        c
+d      9 vector   3000000
+e      4 iostream 60000
+日本語 7 string   9000000
