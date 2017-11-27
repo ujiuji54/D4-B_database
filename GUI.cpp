@@ -17,7 +17,7 @@ void GUI::display(database& input) {
 	}
 	
 	int boxx[(int)input.komoku_x.size()];
-	for (int i = 0; i < (int)input.komoku_x.size();i++)boxx[i]=0;//boxx[]の初期化
+	for (int i = 0; i < (int)input.komoku_x.size();i++) boxx[i]=input.strlen_conversion(komoku_x[i]);//boxx[]の初期化
 	for (int i = 0; i < (int)input.komoku_y.size(); i++){
 		for (int j = 0; j < (int)input.komoku_x.size(); j++){
 			if(boxx[j] < input.strlen_conversion(table[i][j])) boxx[j] = input.strlen_conversion(table[i][j]);
@@ -185,15 +185,19 @@ void GUI::GUI_main(database& input) {
 		cout << "7  : 終了" << endl;
 		cout << "8  : xy反転" <<endl;
       cout <<"9  : データベース情報のファイル入力" << endl;
-		cout <<"10 : テキストファイル印刷" <<endl;		
+		cout <<"10 : テキストファイル印刷" <<endl;
+		c[0]='\n';
+		while(c[0]=='\n'||c[0]==0){
 		cin.getline(c,sizeof(c)); //mode選択
-		mode2=string(c);
+		}
+		mode2=string(c);		
 		for(int i=0;i<mode2.size();i++) {
 			if(mode2[i]<'0'||mode2[i]>'9') mode_p=false;
 			if(i==3) mode_p=false; 
 	   }
 		if(mode_p){
 		mode=stoi(mode2);
+		//cin>>mode;
 		switch (mode){
 		case 1:
 			write(input);
