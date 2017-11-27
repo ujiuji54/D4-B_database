@@ -97,7 +97,7 @@ void database::file_output2(string name){
 	}
 	int boxx[komoku_x.size()];
 	int boxx2;
-	for (int i = 0; i < komoku_x.size();i++) boxx[i]=0;//boxx[]‚Ì‰Šú‰»
+	for (int i = 0; i < komoku_x.size();i++) boxx[i]=strlen_conversion(komoku_x[i]);//boxx[]‚Ì‰Šú‰»;//boxx[]‚Ì‰Šú‰»
 	for (int i = 0; i < komoku_y.size(); i++){
 		for (int j = 0; j < komoku_x.size(); j++){
 			if(boxx[j]<strlen_conversion(table[i][j])) boxx[j]=strlen_conversion(table[i][j]);
