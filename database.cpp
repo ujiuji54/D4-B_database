@@ -127,14 +127,22 @@ void database::file_output2(string name){
 	}
 }
 
-void database::file_input(string name){
+bool database::file_input(string name){
+	ifstream inputfile;
+	inputfile.open(name);
+	if(!inputfile){
+		//cout<<word<<endl;
+		//exit(1);
+		inputfile.close();
+		return false;
+	}
+	else {
 	char c = 0;
 	string s;
 	vector<string> data_str;
 	komoku_x.clear();//”O‚Ì‚½‚ßclear
 	komoku_y.clear();//”O‚Ì‚½‚ßclear
 	table.clear();//”O‚Ì‚½‚ßclear
-	ifstream inputfile(name);
 	//ofstream outputfile("test2.txt");
 	while (1) {
 		inputfile >> s;
@@ -165,7 +173,10 @@ void database::file_input(string name){
 	cout << endl;
 	*/
 	inputfile.close();
+	//cout<<name<<"ƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚Ý‚Ü‚µ‚½"<<endl;
 	//outputfile.close();
+	}
+	return true;
 }
 
 int database::search_x(string name) {

@@ -23,4 +23,5 @@ public:
 	void file_output(database& input);//データベースのデータをファイルに出力する(database::file_out()を使う)
 	void file_input(database& input);
 	void file_copy();
+	void data_clear(database& input);
 };
