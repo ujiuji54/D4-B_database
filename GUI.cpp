@@ -203,7 +203,7 @@ void GUI::GUI_main(database& input) {
 		cout << "7  : 終了" << endl;
 		cout << "8  : xy反転" <<endl;
       cout <<"9  : データベース情報のファイル入力" << endl;
-		cout <<"10 : テキストファイル印刷" <<endl;
+		cout <<"10 : テキストファイル印刷(Linux限定)" <<endl;
 		c[0]='\n';
 		while(c[0]=='\n'||c[0]==0){
 		cin.getline(c,sizeof(c)); //mode選択
