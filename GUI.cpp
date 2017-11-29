@@ -152,8 +152,8 @@ void GUI::file_input(database& input){
 	string name;
 	cout<<"入力するファイル名=";
 	cin>>name;
-	input.file_input(name);
-	cout<<name<<"ファイルを読み込みました"<<endl;
+	if(input.file_input(name)) cout<<name<<"ファイルを読み込みました"<<endl;
+	else cout<<"存在しないファイルです"<<endl;
 }
 
 void GUI::file_copy(){
@@ -166,6 +166,23 @@ void GUI::file_copy(){
 	copy(str,str2);
 }
 
+void GUI::data_clear(database& input){
+	input.komoku_x.clear();
+	input.komoku_y.clear();
+	input.table.clear();
+	string null;
+	vector<string> table_f;
+	cout <<"項目横=";
+	cin>>null;
+	input.komoku_x.push_back(null);
+	cout <<"項目縦=";
+	cin>>null;
+	input.komoku_y.push_back(null);
+	null="NULL";
+	table_f.push_back(null);
+	input.table.push_back(table_f);
+}
+
 void GUI::GUI_main(database& input) {
 	int mode=0;
 	string mode2;
@@ -176,6 +193,7 @@ void GUI::GUI_main(database& input) {
 		update(input);
 		display(input);
 		//cout << "利用したい機能を選択してください" << endl;
+		cout << "0  : 新規作成"<<endl;
 		cout << "1  : 情報の書き込み" << endl;
 		cout << "2  : データベース項目の追加" << endl;
 		cout << "3  : データベース項目の削除" << endl;
@@ -185,7 +203,7 @@ void GUI::GUI_main(database& input) {
 		cout << "7  : 終了" << endl;
 		cout << "8  : xy反転" <<endl;
       cout <<"9  : データベース情報のファイル入力" << endl;
-		cout <<"10 : テキストファイル印刷" <<endl;
+		cout <<"10 : テキストファイル印刷(Linux限定)" <<endl;
 		c[0]='\n';
 		while(c[0]=='\n'||c[0]==0){
 		cin.getline(c,sizeof(c)); //mode選択
@@ -199,6 +217,9 @@ void GUI::GUI_main(database& input) {
 		mode=stoi(mode2);
 		//cin>>mode;
 		switch (mode){
+		case 0:
+			data_clear(input);
+			break;
 		case 1:
 			write(input);
 			break;
