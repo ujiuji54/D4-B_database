@@ -188,7 +188,7 @@ void GUI::GUI_main(database& input) {
 	string mode2;
 	bool mode_p;
 	char c[1023];
-	while (mode!=7) {
+	while (mode!=10) {
 		mode_p=true;
 		update(input);
 		display(input);
@@ -200,10 +200,16 @@ void GUI::GUI_main(database& input) {
 		cout << "4  : 項目の並び替え" << endl;
 		cout << "5  : 項目の検索" << endl;
 		cout << "6  : データベース情報をファイル出力" << endl;
+		cout << "7  : データベース情報のファイル入力" << endl;
+		cout << "8  : xy反転" <<endl;
+		cout << "9 : テキストファイル印刷(Linux限定)" <<endl;
+		cout << "10  : 終了" << endl;
+		/*		
 		cout << "7  : 終了" << endl;
 		cout << "8  : xy反転" <<endl;
       cout <<"9  : データベース情報のファイル入力" << endl;
 		cout <<"10 : テキストファイル印刷(Linux限定)" <<endl;
+		*/
 		c[0]='\n';
 		while(c[0]=='\n'||c[0]==0){
 		cin.getline(c,sizeof(c)); //mode選択
@@ -238,16 +244,16 @@ void GUI::GUI_main(database& input) {
 		case 6:
 			file_output(input);
 			break;
-		case 7:
+		case 10:
 			cout << "終了します．" << endl;
 			break;
 		case 8:
 			xy_conversion(input);
 			break;
-		case 9:
+		case 7:
 			file_input(input);
 			break;
-		case 10:
+		case 9:
 			file_copy();
 			break;
 		default:
